@@ -4,7 +4,7 @@ const msgErro = document.getElementById("mensagemErro");
 function irParaPerfil() {
     const usuario = inputUsuario.value.trim();
     if (usuario === "") {
-        if (msgErro) msgErro.textContent = "Por favor, digite um nome de usuário.";
+        if (msgErro) msgErro.textContent = "Please enter a lastfm username.";
         return;
     }
     if (msgErro) msgErro.textContent = "";
