@@ -32,11 +32,13 @@
         <link rel="manifest" href="/site.webmanifest" />
     </head>
     <body class="pagina-resultado">
-        <!-- Dev only: Replace production URLs with localhost -->
-        <script src="../dev-link-replacer.js"></script>
-        
         <header class="topo-fixo">
-            <a href="index.html" class="btn-voltar">← Back</a>
+           <a href="index.html" class="btn-voltar" style="display: flex; align-items: center; gap: 8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 12h16M4 12l4-4m-4 4 4 4"/>
+            </svg>
+            <span>Back</span>
+            </a>
             <div class="period-toggle">
                 <div class="toggle-glider"></div>
                 <button class="toggle-option" data-period="7day">Week</button>
