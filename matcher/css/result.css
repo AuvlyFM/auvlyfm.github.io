@@ -98,6 +98,10 @@
     justify-content: center;
     line-height: 1;
     gap: 5px; 
+    font-size: 3rem;
+    font-weight: 900;
+    font-style: italic;
+    color: rgba(255,255,255,0.15); 
 }
 #vsScoreTag {
     font-family: "Poppins", sans-serif;
