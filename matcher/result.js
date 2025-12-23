@@ -181,8 +181,11 @@ function renderScrobbles(p1, p2) {
 }
 
 function updateScoreUI(score) {
-    // Score na tela
+    // Score na tela principal (Topo)
     const scoreEl = document.getElementById("compatibilityScore");
+    // Score abaixo do VS (Novo)
+    const vsScoreEl = document.getElementById("vsScoreTag");
+    
     let current = 0;
     const interval = setInterval(() => {
         current += 2;
@@ -190,7 +193,8 @@ function updateScoreUI(score) {
             current = score;
             clearInterval(interval);
         }
-        scoreEl.textContent = current;
+        if(scoreEl) scoreEl.textContent = current;
+        if(vsScoreEl) vsScoreEl.textContent = current + "%"; // Mostra no VS
     }, 20);
 
     // Texto descritivo
@@ -199,10 +203,14 @@ function updateScoreUI(score) {
     if (score > 50) text = "Vibe Buddies";
     if (score > 70) text = "Sonic Soulmates";
     if (score > 90) text = "A Perfect Match!";
-    document.getElementById("commonContent").textContent = text;
-    document.getElementById("storySharedText").textContent = text;
+    
+    const commonContent = document.getElementById("commonContent");
+    if(commonContent) commonContent.textContent = text;
+    
+    const storyText = document.getElementById("storySharedText");
+    if(storyText) storyText.textContent = text;
 
-    // Score nos Cards
+    // Score nos Cards Ocultos
     document.getElementById("storyScoreValue").textContent = score + "%";
     document.getElementById("sqScoreValue").textContent = score + "%";
 }
@@ -383,7 +391,6 @@ function setupUIEvents() {
     const formatModal = document.getElementById("formatPickerModal");
     const colorModal = document.getElementById("colorPickerModal");
     const genBtn = document.getElementById("btnGerarRelatorio");
-    const confirmColorBtn = document.getElementById("confirmColumnsBtn"); // "Choose Color"
 
     // Abrir modal de formato
     genBtn.addEventListener("click", () => formatModal.style.display = "flex");
@@ -396,20 +403,15 @@ function setupUIEvents() {
         });
     });
 
-    // Seleção de Formato
+    // CORREÇÃO 2: Seleção de Formato JÁ ABRE o Color Picker
     document.querySelectorAll(".format-option").forEach(btn => {
         btn.onclick = (e) => {
             selectedFormat = e.currentTarget.getAttribute("data-format");
-            // Highlight visual
-            document.querySelectorAll(".format-option").forEach(b => b.style.borderColor = "rgba(255,255,255,0.1)");
-            e.currentTarget.style.borderColor = "#bb86fc";
+            
+            // Fecha formato e abre cor imediatamente
+            formatModal.style.display = "none";
+            colorModal.style.display = "flex";
         };
-    });
-
-    // Botão "Choose Color" (que na vdd vai para o color picker)
-    confirmColorBtn.addEventListener("click", () => {
-        formatModal.style.display = "none";
-        colorModal.style.display = "flex";
     });
 
     // Seleção de Cor e Geração Final
@@ -483,19 +485,23 @@ async function generateFinalImage() {
 function applyDynamicColors(card, color, format) {
     if (format === "story") {
         // Elementos Story
-        card.querySelectorAll(".story-rank, .stat-label, .story-brand").forEach(el => el.style.color = color);
+        card.querySelectorAll(".story-rank, .stat-label").forEach(el => el.style.color = color);
+        // CORREÇÃO 4: Removido .story-brand da lista acima para não pintar o brand
+        
         card.querySelectorAll(".story-column h3").forEach(el => el.style.borderLeftColor = color);
         card.querySelectorAll(".story-item.top-1, .story-stat").forEach(el => {
             el.style.borderColor = color;
-            el.style.backgroundColor = color + "22"; // 22 = baixa opacidade hex
+            el.style.backgroundColor = color + "22"; 
         });
 
-        // Background com Imagem do Artista em Comum
+        // CORREÇÃO 3: Background do Story
         const headerBg = card.querySelector(".story-header");
+        // Ajustamos o gradiente para ser Radial no topo direito (igual o square)
+        // E garantimos que a imagem fique 'atrás' usando a ordem correta no CSS ou aqui
         if (globalTopCommonImage) {
             headerBg.style.background = `
-                linear-gradient(to bottom, ${color}66 0%, transparent 40%),
-                linear-gradient(to top, #0f0f0f 0%, rgba(15,15,15,0.6) 50%, transparent 100%),
+                linear-gradient(to bottom, rgba(15,15,15,0.3) 0%, #0f0f0f 100%),
+                radial-gradient(circle at top right, ${color}99, transparent 60%),
                 url('${globalTopCommonImage}') no-repeat center center / cover
             `;
         } else {
@@ -504,7 +510,9 @@ function applyDynamicColors(card, color, format) {
 
     } else {
         // Elementos Square
-        card.querySelectorAll(".sq-v2-rank, .sq-v2-stat-label, .sq-v2-brand").forEach(el => el.style.color = color);
+        // CORREÇÃO 4: Removido .sq-v2-brand
+        card.querySelectorAll(".sq-v2-rank, .sq-v2-stat-label").forEach(el => el.style.color = color);
+        
         card.querySelectorAll(".sq-v2-column h3").forEach(el => el.style.borderLeftColor = color);
         card.querySelectorAll(".sq-v2-list li.top-1, .sq-v2-stat, .sq-v2-avatar").forEach(el => {
             el.style.borderColor = color;
@@ -514,6 +522,5 @@ function applyDynamicColors(card, color, format) {
         card.style.background = `radial-gradient(circle at top right, ${color}44, #0f0f0f 60%)`;
     }
 }
-
 // Start
 document.addEventListener("DOMContentLoaded", init);
