@@ -146,13 +146,20 @@ async function atualizarDadosDoPeriodo(isInitialLoad = false) {
     globalTopArtistImage = "";
     atualizarBanner("");
     const nextBtn = document.getElementById("nextPeriod");
-    if (nextBtn) nextBtn.style.visibility = periodOffset === 0 ? "hidden" : "visible";
     if (elements.chartsGrid) elements.chartsGrid.style.display = "grid";
     if (elements.genReportBtn) elements.genReportBtn.style.display = "flex";
     if (elements.mainTitle) {
         elements.mainTitle.textContent = "Your Top List";
         elements.mainTitle.style.opacity = "1";
     }
+    if (nextBtn) {
+    nextBtn.style.visibility = ""; 
+    if (periodOffset === 0) {
+        nextBtn.classList.add("nav-disabled");
+    } else {
+        nextBtn.classList.remove("nav-disabled");
+    }
+}
 
     let reportSubtitle = "";
     let labelText = "";
@@ -245,10 +252,12 @@ async function processarDadosTempoCalendario(fromTimestamp, toTimestamp, periodN
         let totalSeconds = 0;
         const artistMap = {};
         const trackMap = {};
+        const albumMap = {};
 
         tracks.forEach(t => {
             const artistName = t.artist ? t.artist["#text"] : "Unknown";
             const trackName = t.name;
+            const albumName = t.album ? t.album["#text"] : "";
             
             let duration = parseInt(t.duration || "0");
             if (duration === 0) {
@@ -263,6 +272,11 @@ async function processarDadosTempoCalendario(fromTimestamp, toTimestamp, periodN
                 const trackKey = `${trackName}_||_${artistName}`;
                 if (!trackMap[trackKey]) trackMap[trackKey] = { seconds: 0, name: trackName, artist: artistName };
                 trackMap[trackKey].seconds += duration;
+                if (albumName) {
+                    const albumKey = `${albumName}_||_${artistName}`;
+                    if (!albumMap[albumKey]) albumMap[albumKey] = { seconds: 0, name: albumName, artist: artistName };
+                    albumMap[albumKey].seconds += duration;
+                }
             }
         });
 
@@ -292,11 +306,17 @@ async function processarDadosTempoCalendario(fromTimestamp, toTimestamp, periodN
             .map(obj => ({ name: obj.name, artist: { name: obj.artist }, seconds: obj.seconds }))
             .sort((a, b) => b.seconds - a.seconds);
 
+        const sortedAlbums = Object.values(albumMap) 
+            .map(obj => ({ name: obj.name, artist: { name: obj.artist }, seconds: obj.seconds }))
+            .sort((a, b) => b.seconds - a.seconds);
+
         cachedData.artists = sortedArtists;
         cachedData.tracks = sortedTracks;
+        cachedData.albums = sortedAlbums;
 
         renderizarPreviewLista("cardArtists", sortedArtists, "artist");
         renderizarPreviewLista("cardTracks", sortedTracks, "track");
+        renderizarPreviewLista("cardAlbums", sortedAlbums, "album");
 
         if (sortedArtists.length > 0) {
             const topArtistName = sortedArtists[0].name;
@@ -330,6 +350,22 @@ async function processarDadosTempoCalendario(fromTimestamp, toTimestamp, periodN
                         img.style.height = "100%";
                         img.style.objectFit = "cover";
                         img.onload = () => { top1TrackEl.appendChild(img); img.classList.add('loaded'); };
+                    }
+                }
+            });
+        }
+        
+        if (sortedAlbums.length > 0) {
+            const topAlbum = sortedAlbums[0];
+            buscarImagemSpotify(topAlbum.artist.name, topAlbum.name, "album").then((url) => {
+                if (url) {
+                    const top1AlbumEl = document.querySelector("#cardAlbums .top-1 .cover-placeholder");
+                    if (top1AlbumEl) {
+                        top1AlbumEl.innerHTML = "";
+                        const img = new Image();
+                        img.src = url;
+                        img.style.width = "100%"; img.style.height = "100%"; img.style.objectFit = "cover";
+                        img.onload = () => { top1AlbumEl.appendChild(img); img.classList.add('loaded'); };
                     }
                 }
             });
@@ -421,26 +457,39 @@ async function obterTokenSpotify() {
     return null;
 }
 
-async function buscarImagemSpotify(artist, trackName, type) {
+async function buscarImagemSpotify(artist, trackName, type) { // O parâmetro correto é trackName
     const token = await obterTokenSpotify();
     if (!token) return null;
+    
     const cleanArtist = encodeURIComponent(artist);
-    const cleanTrack = trackName ? encodeURIComponent(trackName.split(" - ")[0].split("(")[0]) : "";
+    // CORREÇÃO 1: Usar 'trackName' em vez de 'name'
+    const cleanName = trackName ? encodeURIComponent(trackName.split(" - ")[0].split("(")[0]) : "";
+    
     let query = "";
     let searchType = "";
+
     if (type === "artist") {
         query = `q=artist:"${cleanArtist}"`;
         searchType = "artist";
+    } else if (type === "album") { 
+        query = `q=album:"${cleanName}" artist:"${cleanArtist}"`;
+        searchType = "album";
     } else {
-        query = `q=track:"${cleanTrack}" artist:"${cleanArtist}"`;
+        query = `q=track:"${cleanName}" artist:"${cleanArtist}"`;
         searchType = "track";
     }
+
     try {
         const url = `https://api.spotify.com/v1/search?${query}&type=${searchType}&limit=1`;
+        
         const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
         const data = await res.json();
+
         if (type === "artist" && data.artists?.items?.length > 0) {
             return data.artists.items[0].images[0]?.url;
+        } else if (type === "album" && data.albums?.items?.length > 0) { 
+            // CORREÇÃO 2: Removi a barra '/' que estava aqui causando erro
+            return data.albums.items[0].images[0]?.url;
         } else if (type === "track" && data.tracks?.items?.length > 0) {
             return data.tracks.items[0].album.images[0]?.url;
         }
@@ -478,16 +527,24 @@ function renderizarPreviewLista(elementId, dataList, type) {
     const mainItems = dataList.slice(0, 10);
     const container = document.querySelector(`#${elementId} .lista-top`);
     if (!container) return;
+    
     let htmlMain = "";
+    
     mainItems.forEach((item, i) => {
         const isTop1 = i === 0;
         let text = item.name;
-        let subtext = "";
+        
+        // --- CORREÇÃO AQUI: Definimos a variável timeStr antes de usar ---
         const timeStr = formatTimeShort(item.seconds);
-        if (type === "track") {
+        // ----------------------------------------------------------------
+
+        let subtext = "";
+        if (type === "track" || type === "album") {
             subtext = `<span style="opacity:0.6"> - ${item.artist.name}</span>`;
         }
+        
         const imgId = `img-${type}-${i}`;
+        
         if (isTop1) {
             htmlMain += `
             <div class="chart-item top-1">
@@ -510,6 +567,7 @@ function renderizarPreviewLista(elementId, dataList, type) {
             </div>`;
         }
     });
+    
     container.innerHTML = htmlMain || "No data.";
 }
 

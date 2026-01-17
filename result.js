@@ -126,7 +126,14 @@ async function atualizarDadosDoPeriodo(isInitialLoad = false) {
     atualizarBanner("");
 
     const nextBtn = document.getElementById("nextPeriod");
-    if (nextBtn) nextBtn.style.visibility = periodOffset === 0 ? "hidden" : "visible";
+    if (nextBtn) {
+    nextBtn.style.visibility = ""; 
+    if (periodOffset === 0) {
+        nextBtn.classList.add("nav-disabled");
+    } else {
+        nextBtn.classList.remove("nav-disabled");
+    }
+}
 
     let reportSubtitle = "";
     let labelText = "";

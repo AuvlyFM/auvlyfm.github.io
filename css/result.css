@@ -238,6 +238,12 @@
 .nav-btn:active {
     transform: scale(0.95);
 }
+.nav-disabled {
+    opacity: 0.3; 
+    cursor: default;
+    pointer-events: none; 
+    filter: grayscale(1);
+}
 .nav-btn svg {
     width: 20px;
     height: 20px;

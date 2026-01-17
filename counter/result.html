@@ -64,8 +64,6 @@
                     <div class="scrobbles-info"><span id="userScrobbles" class="skeleton">----</span></div>
                     <div class="scrobbles-info"><span id="scrobblesPerDay" class="skeleton">--</span></div>
                 </div>
-                <div class="header-titles">
-                <h2 class="subtitulo-destaque">Your Top List</h2>
                 <div class="period-navigation">
                     <button id="prevPeriod" class="nav-btn" title="Previous">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -127,6 +125,27 @@
                         <div class="chart-item skeleton"></div>
                         <div class="chart-item skeleton"></div>
                     </div>
+                </section>
+                <section class="chart-card" id="cardAlbums">
+                <h2>
+                Top Albums
+                </h2>
+                <div class="lista-top">
+                <div class="chart-item skeleton top-1">
+                <div class="cover-placeholder" style="background: #333; width: 50px; height: 50px; border-radius: 4px; flex-shrink: 0;"></div>
+                <span class="skeleton-text" style="width: 60%;"></span>
+                </div>
+                        <div class="chart-item skeleton"></div>
+                        <div class="chart-item skeleton"></div>
+                        <div class="chart-item skeleton"></div>
+                        <div class="chart-item skeleton"></div>
+                        <div class="chart-item skeleton"></div>
+                        <div class="chart-item skeleton"></div>
+                        <div class="chart-item skeleton"></div>
+                        <div class="chart-item skeleton"></div>
+                        <div class="chart-item skeleton"></div>
+                        <div class="chart-item skeleton"></div>
+                </div>
                 </section>
             </div>
         </main>
@@ -230,6 +249,13 @@
                         <label class="toggle-switch">
                             <input type="checkbox" id="col-tracks" class="chart-col-option" data-list="tracks" data-title="Top Tracks" checked />
                             <span class="slider"></span>
+                        </label>
+                    </div>
+                    <div class="toggle-switch-row">
+                        <label class="toggle-label" for="col-albums">Top Albums</label>
+                        <label class="toggle-switch">
+                        <input type="checkbox" id="col-albums" class="chart-col-option" data-list="albums" data-title="Top Albums" />
+                        <span class="slider"></span>
                         </label>
                     </div>
                 </div>
