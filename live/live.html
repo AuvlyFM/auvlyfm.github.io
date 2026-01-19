@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+    <meta charset="UTF-8" /><meta content="width=device-width,initial-scale=1" name="viewport" /><title>
+        TuneCharts Live</title
+    ><link href="/css/base.css" rel="stylesheet" /><link href="/css/style.css" rel="stylesheet" /><link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap"
+        rel="stylesheet"
+    /><link href="../favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" /><link
+        href="../favicon-16x16.png"
+        rel="icon"
+        sizes="16x16"
+        type="image/png"
+    /><meta content="#000000" name="theme-color" />
+    <div class="solid-bg-layer" id="solid-bg-layer"></div>
+    <div class="bg-layer" id="bg-layer"></div>
+    <div class="bg-overlay"></div>
+    <nav class="live-nav">
+        <a class="back-btn" href="index.html" title="Exit"
+            ><svg
+                fill="none"
+                height="24"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                width="24"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+            <span>Back</span></a
+        >
+    </nav>
+    <div class="user-tag" id="user-settings-trigger">
+        <img alt="" src="" class="hidden user-avatar" id="user-avatar" /> <span id="user-display-name"></span>
+        <svg
+            fill="none"
+            height="16"
+            stroke="currentColor"
+            stroke-width="2"
+            viewBox="0 0 24 24"
+            width="16"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="settings-icon"
+            style="margin-left: 5px; opacity: 0.7"
+        >
+            <circle cx="12" cy="12" r="3"></circle>
+            <path
+                d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+            ></path>
+        </svg>
+        <div class="custom-tooltip" id="settings-tooltip">Customize your style here</div>
+    </div>
+    <main class="layout-center player-container" id="player-container">
+        <div class="player-content">
+            <div class="artwork-wrapper">
+                <div class="art-placeholder" id="art-placeholder">
+                    <svg
+                        fill="none"
+                        height="40"
+                        stroke="rgba(255,255,255,0.2)"
+                        stroke-width="2"
+                        viewBox="0 0 24 24"
+                        width="40"
+                    >
+                        <path d="M9 18V5l12-2v13"></path>
+                        <circle cx="6" cy="18" r="3"></circle>
+                        <circle cx="18" cy="16" r="3"></circle>
+                    </svg>
+                </div>
+                <img alt="Album Art" src="" class="hidden album-art" id="album-art" crossorigin="anonymous" />
+            </div>
+            <div class="track-info">
+                <h1 class="track-name" id="track-name">Loading...</h1>
+                <h2 class="artist-name" id="artist-name"></h2>
+            </div>
+        </div>
+    </main>
+    <div class="sidebar-overlay" id="sidebar-overlay"></div>
+    <aside class="settings-menu" id="settings-menu">
+        <div class="menu-header">
+            <h3>Customization</h3>
+            <button class="close-btn" id="close-menu">×</button>
+        </div>
+        <div class="menu-scroll-content">
+            <div class="menu-section">
+                <h4>Layout</h4>
+                <div class="layout-options">
+                    <button class="layout-btn active" data-layout="layout-center">Center</button>
+                    <button class="layout-btn" data-layout="layout-bottom-left">Bottom Left</button>
+                    <button class="layout-btn" data-layout="layout-bottom-right">Bottom Right</button>
+                </div>
+            </div>
+            <div class="menu-section">
+                <h4>Visibility</h4>
+                <div class="toggle-row">
+                    <span>Show Track Name</span>
+                    <label class="switch"
+                        ><input checked id="toggle-track" type="checkbox" /> <span class="round slider"></span
+                    ></label>
+                </div>
+                <div class="toggle-row">
+                    <span>Show Artist Name</span>
+                    <label class="switch"
+                        ><input checked id="toggle-artist" type="checkbox" /> <span class="round slider"></span
+                    ></label>
+                </div>
+            </div>
+            <div class="menu-section">
+                <h4>Background</h4>
+                <div class="layout-options" style="margin-bottom: 15px">
+                    <button class="bg-mode-btn active" data-bg-mode="artist">Artist</button>
+                    <button class="bg-mode-btn" data-bg-mode="album">Album</button>
+                    <button class="bg-mode-btn" data-bg-mode="solid">Solid</button>
+                </div>
+                <div class="toggle-row" id="blur-control-row">
+                    <span>Blur Background</span>
+                    <label class="switch"
+                        ><input checked id="toggle-blur" type="checkbox" /> <span class="round slider"></span
+                    ></label>
+                </div>
+            </div>
+        </div>
+        <div class="menu-footer">
+            <div class="footer-brand">
+                <img alt="Logo" src="android-chrome-512x512.png" width="20" />
+                <span>TuneCharts <span style="color: var(--accent-color)">Live</span></span>
+            </div>
+            <a class="versao" href="https://github.com/snw-mint/tunecharts/releases" target="_blank">v0.0.0</a>
+        </div>
+    </aside>
+    <script src="script.js"></script>
+    <script src="../version.js"></script>
+</html>

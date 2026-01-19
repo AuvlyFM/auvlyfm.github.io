@@ -11,3 +11,6 @@ matcher/sitemap.xml
 matcher/.htacess
 matcher/maintenance.html
 matcher/htaccess
+live/robots.txt
+live/sitemap.xml
+live/.htacess

@@ -23,6 +23,11 @@ tunecharts/
 │   ├── index.html
 │   ├── assets/         
 │   └── ...
+│
+├── live/            
+│   ├── index.html
+│   ├── live.html (The brain)
+│   └── ...
 ```
 
 ## 🛠️ Tools & Features
@@ -47,6 +52,22 @@ Calculates the total time (hours/minutes) a user has spent listening to music.
 ### 3. Matcher (/matcher)
 
 A compatibility tool that cross-references listening history between two users to generate a "Match Score" based on shared artists and genres.
+
+### 4. Live (/live)
+
+A real-time "Always-On Display" visualizer that transforms your monitor into a dynamic music frame.
+
+- Functionality: Continuously monitors your Last.fm "Now Playing" status. When a song starts, it fetches high-resolution album art or artist imagery from Spotify to create a beautiful, immersive backdrop.
+
+- Platform Limitation: Desktop & Tablet Only.
+
+- Reasoning: This tool is designed to function as a digital photo frame or a "Zen Mode" companion for your second monitor while you work or relax. To preserve this specific immersive aesthetic, the interface is restricted on mobile devices (smartphones).
+
+- Features: Real-time polling (updates automatically without refresh).
+
+- Customization Menu: Toggle artist/track names, choose background modes (Artist Image, Album Art, or Solid Color), and adjust layout positions.
+
+- Idle Mode: Automatically detects when music stops.
 
 ## ⚠️ Security & API Usage
 

@@ -17,9 +17,29 @@
         <link rel="stylesheet" href="css/home.css" />
         <link rel="stylesheet" href="css/feedback.css" />
         <title>Last.fm Time Calculator & Stats - TuneCharts Counter</title>
+        <style>
+            .hero-section { min-height: 60vh; }
+            .card-inicial h1 {
+                background: linear-gradient(45deg, #fff, #bb86fc);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+            .badge-new, .badge-new-mobile {
+                background-color: #bb86fc;
+                color: #000;
+                font-size: 0.6rem;
+                font-weight: 800;
+                padding: 2px 5px;
+                border-radius: 4px;
+                margin-left: 6px;
+                vertical-align: middle;
+                letter-spacing: 0.5px;
+                text-transform: uppercase;
+            }
+        </style>
         <meta name="description" content="Free tool to calculate your total listening time on Last.fm. Convert scrobbles into hours and minutes. Generate beautiful charts for Instagram Stories." />
         <meta name="keywords" content="last.fm time calculator, listening hours, music duration, scrobble time, lastfm stats, instagram music stories" />
-        <meta name="author" content="DreyWe" />
+        <meta name="author" content="SnwMint" />
         <meta name="theme-color" content="#0f0f0f" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://counter.tunecharts.space/" />
@@ -61,29 +81,28 @@
         </script>
     </head>
     <body id="page-top">
-        <!-- Dev only: Replace production URLs with localhost -->
-        <script src="../dev-link-replacer.js"></script>
-        
         <header class="home-header">
             <a href="index.html" class="logo-container">
-                <img src="icon.png" alt="TuneCharts Counter" class="logo-icon" />
+                <img src="android-chrome-512x512.png" alt="TuneCharts Counter" class="logo-icon" />
                 <span class="logo-text">TuneCharts <span style="color: #bb86fc; font-weight: 700; text-transform: uppercase; font-size: 0.6em; margin-left: 5px">Counter</span></span>
             </a>
-            <nav class="nav-desktop">
+        <nav class="nav-desktop">
                 <a href="https://tunecharts.space" class="nav-link">Charts</a>
-                <a href="index.html" class="nav-link active">Counter</a>
-                <a href="https://matcher.tunecharts.space" class="nav-link">Matcher</a>
+                <a href="https://counter.tunecharts.space" class="nav-link active">Counter</a> <a href="https://matcher.tunecharts.space" class="nav-link">Matcher</a>
+                <a href="https://live.tunecharts.space" class="nav-link">Live <span class="badge-new">NEW</span></a>
             </nav>
+        
             <button class="mobile-menu-btn" aria-label="Open Menu">
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
                 <span class="hamburger-line"></span>
             </button>
+        
             <div class="mobile-nav-overlay">
                 <a href="https://tunecharts.space" class="mobile-link">Charts</a>
-                <a href="index.html" class="mobile-link active">Counter</a>
+                <a href="https://counter.tunecharts.space" class="mobile-link active">Counter</a>
                 <a href="https://matcher.tunecharts.space" class="mobile-link">Matcher</a>
-            </div>
+        </div>
         </header>
         <main class="hero-section">
             <div class="card-inicial">
@@ -209,6 +228,6 @@
         </footer>
         <script src="script.js"></script>
         <script src="feedback.js"></script>
-        <script src="../version.js"></script>
+        <script src="version.js"></script>
     </body>
 </html>
