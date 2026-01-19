@@ -277,12 +277,12 @@
     text-overflow: ellipsis;
 }
 .sq-v2-list {
-    list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 30px;
+    list-style: none;
     padding: 0;
-    overflow: hidden;
+    margin: 0;
 }
 .sq-v2-list li {
     display: flex;

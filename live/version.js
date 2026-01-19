@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
             console.error("Version Error:", error);
         });
 });
+
 document.addEventListener("DOMContentLoaded", () => {
     const scrollBtn = document.getElementById("scrollTopBtn");
     if (scrollBtn) {

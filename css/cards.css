@@ -200,7 +200,6 @@
     flex-direction: column;
     padding: 60px;
     color: #fff;
-    font-family: "Poppins", sans-serif;
     position: relative;
     overflow: hidden;
     background: radial-gradient(circle at top right, #3a0050, #0f0f0f 60%);
@@ -266,12 +265,12 @@
     flex-shrink: 0;
 }
 .sq-v2-list {
-    list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 30px;
+    list-style: none;
     padding: 0;
-    overflow: hidden;
+    margin: 0;
 }
 .sq-v2-list li {
     display: flex;

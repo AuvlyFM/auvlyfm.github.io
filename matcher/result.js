@@ -188,7 +188,7 @@ function fillColumn(cardId, items, isShared) {
     
     let html = "";
 
-    const loopLimit = isShared ? Math.min(items.length, 5) : 5;
+    const loopLimit = isShared ? Math.min(items.length, 10) : 10;
     
     for (let i = 0; i < loopLimit; i++) {
         const item = items[i];
@@ -217,7 +217,7 @@ function fillColumn(cardId, items, isShared) {
         }
     }
 
-    if (isShared && items.length < 5) {
+    if (isShared && items.length < 10) {
         html += `
         <div style="padding: 15px; text-align: center; color: #666; font-size: 0.85rem; font-style: italic; opacity: 0.7;">
             Only ${items.length} result${items.length === 1 ? '' : 's'} found.

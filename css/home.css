@@ -177,6 +177,7 @@
     transform: rotate(0deg);
 }
 .card-inicial h1 {
+    font-size: 2.5rem;
     margin-bottom: 10px;
     font-weight: 700;
 }
@@ -436,11 +437,6 @@ footer {
     }
     .card-inicial {
         padding: 30px 20px;
-    }
-    .counter-promo {
-        width: 90%;
-        justify-content: center;
-        font-size: 0.85rem;
     }
     body {
         -webkit-overflow-scrolling: touch;

@@ -385,7 +385,7 @@
     border-bottom: 2px solid #282828;
     text-align: center;
     font-size: 2rem;
-    font-weight: 800;
+    font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -496,7 +496,6 @@ h1.skeleton {
     }
 }
 #btnGerarRelatorio {
-    font-family: "Poppins", sans-serif;
     position: fixed;
     bottom: 30px;
     left: 50%;
@@ -653,7 +652,6 @@ input:checked + .slider::before {
     transform: translateX(22px);
 }
 .btn-proceed {
-    font-family: "Poppins", sans-serif;
     background-color: #bb86fc;
     color: #000;
     font-weight: 800;
@@ -851,7 +849,6 @@ body {
 }
 .topo-fixo .btn-voltar {
     display: flex;
-    font-family: "Poppins", sans-serif;
     color: #fff;
     text-decoration: none;
     font-size: 0.9rem;

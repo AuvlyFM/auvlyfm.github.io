@@ -384,7 +384,7 @@
     border-bottom: 2px solid #282828;
     text-align: center;
     font-size: 2rem;
-    font-weight: 800;
+    font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
@@ -495,7 +495,6 @@ h1.skeleton {
     }
 }
 #btnGerarRelatorio {
-    font-family: "Poppins", sans-serif;
     position: fixed;
     bottom: 30px;
     left: 50%;
@@ -598,7 +597,7 @@ h1.skeleton {
 .toggle-switch-row {
     display: flex;
     justify-content: space-between;
-    align-items: left;
+    align-items: center;
     width: 100%;
     padding: 12px 0;
     border-bottom: 1px solid rgb(255 255 255 / 0.05);
@@ -607,9 +606,12 @@ h1.skeleton {
     border-bottom: none;
 }
 .toggle-label {
+    display: flex;
+    align-items: center;
     font-size: 1.1rem;
     font-weight: 600;
     color: #fff;
+    cursor: pointer;
 }
 .toggle-switch {
     position: relative;
@@ -652,7 +654,6 @@ input:checked + .slider::before {
     transform: translateX(22px);
 }
 .btn-proceed {
-    font-family: "Poppins", sans-serif;
     background-color: #bb86fc;
     color: #000;
     font-weight: 800;
@@ -850,7 +851,6 @@ body {
 }
 .topo-fixo .btn-voltar {
     display: flex;
-    font-family: "Poppins", sans-serif;
     color: #fff;
     text-decoration: none;
     font-size: 0.9rem;
@@ -886,7 +886,6 @@ body {
     color: #bb86fc;
     font-weight: 700;
     font-size: 1.1rem;
-    font-family: "Poppins", sans-serif;
     cursor: pointer;
     display: flex;
     align-items: center;

@@ -9,7 +9,6 @@
         <link rel="stylesheet" href="css/result.css" />
         <link rel="stylesheet" href="css/cards.css" />
         <link rel="stylesheet" href="css/feedback.css" />
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet" />
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-ESP4KVJCPE"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
@@ -64,7 +63,8 @@
             <h2 class="subtitulo-destaque">MATCH: <span id="compatibilityScore">--</span>%</h2>
             <p id="commonContent" class="monthly-label">Analyzing your musical bond...</p>
         </div>
-
+    </section> 
+    
     <main class="conteudo-charts">
         <div class="charts-grid">
             <section class="chart-card" id="cardUser1">
@@ -164,12 +164,12 @@
             </div>
         </div>
     </div>
-    <button id="btnGerarRelatorio" style="display: flex; align-items: center; gap: 10px; justify-content: center;">
+        <button id="btnGerarRelatorio" style="display: flex; align-items: center; gap: 10px; justify-content: center;">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m8 12 4 4m0 0 4-4m-4 4V4M4 20h16"/>
+        <path d="M3 15c0 2.828 0 4.243.879 5.121C4.757 21 6.172 21 9 21h6c2.828 0 4.243 0 5.121-.879C21 19.243 21 17.828 21 15M12 3v13m0 0 4-4.375M12 16l-4-4.375"/>
         </svg>
         Generate Report
-    </button>
+        </button>
 
     <div id="formatPickerModal" class="modal">
         <div class="modal-content">
@@ -238,6 +238,6 @@
             </button>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="result.js"></script>
-    <script src="version.js"></script>
+    <script src="../version.js"></script>
     </body>
 </html>
