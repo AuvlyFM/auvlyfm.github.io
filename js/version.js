@@ -3,7 +3,6 @@ const packageJsonUrl = `package.json?t=${new Date().getTime()}`;
 document.addEventListener("DOMContentLoaded", () => {
 
     const APP_VERSION = "v5.0.0"; 
-
     const versionElements = document.querySelectorAll(".versao, #versao");
 
     versionElements.forEach(element => {
