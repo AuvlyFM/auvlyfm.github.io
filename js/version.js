@@ -1,21 +1,19 @@
 const packageJsonUrl = `package.json?t=${new Date().getTime()}`;
 
 document.addEventListener("DOMContentLoaded", () => {
-    fetch(packageJsonUrl)
-        .then((response) => {
-            if (!response.ok) throw new Error("Error reading the version");
-            return response.json();
-        })
-        .then((data) => {
-            const versionElements = document.querySelectorAll(".versao");
-            
-            versionElements.forEach((element) => {
-                element.textContent = `v${data.version}`;
-            });
-        })
-        .catch((error) => {
-            console.error("Version Error:", error);
-        });
+
+    const APP_VERSION = "v5.0.0"; 
+
+    const versionElements = document.querySelectorAll(".versao, #versao");
+
+    versionElements.forEach(element => {
+        element.textContent = APP_VERSION;
+        if (element.tagName === "A" && !element.getAttribute('href')) {
+             element.href = "https://github.com/snw-mint/auvly-fm/releases";
+        }
+    });
+
+    console.log(`Auvly ${APP_VERSION} loaded.`);
 });
 
 document.addEventListener("DOMContentLoaded", () => {

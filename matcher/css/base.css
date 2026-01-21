@@ -8,7 +8,7 @@
     font-family: "DM Sans";
     font-style: normal;
     font-weight: 500;
-    src: url(../'assets/fonts/dm-sans-500.woff2') format("woff2");
+    src: url('../assets/fonts/dm-sans-500.woff2') format("woff2");
 }
 @font-face {
     font-family: "DM Sans";
@@ -26,7 +26,7 @@
     font-family: "Outfit";
     font-style: normal;
     font-weight: 800;
-    src: url('../assets/fonts/outfit-800.woff2.woff2') format("woff2");
+    src: url('../assets/fonts/outfit-800.woff2') format("woff2");
 }
 
 * {
