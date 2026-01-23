@@ -43,15 +43,50 @@ async function init() {
     await checkNowPlaying();
     setInterval(checkNowPlaying, POLL_INTERVAL);
 }
+async function init() {
+    if (!username) {
+        window.location.href = "index.html";
+        return;
+    }
+    applySettingsToUI();
+    setupMenuEvents(); 
+    setupControls();   
+    showTooltip(); 
+    buscarInfoUsuario();
+    await checkNowPlaying();
+    setInterval(checkNowPlaying, POLL_INTERVAL);
+}
 function showTooltip() {
+    const controls = document.getElementById("live-controls");
+    
     setTimeout(() => {
         elements.userTag.classList.add("visible");
         elements.userTag.classList.add("show-tooltip");
+        if(controls) controls.classList.add("visible");
     }, 1000);
+
     setTimeout(() => {
         elements.userTag.classList.remove("show-tooltip");
         elements.userTag.classList.remove("visible");
+        if(controls) controls.classList.remove("visible");
     }, 8000);
+}
+function setupControls() {
+    const fullscreenBtn = document.getElementById("fullscreen-btn");
+    if (fullscreenBtn) {
+        fullscreenBtn.addEventListener("click", toggleFullScreen);
+    }
+}
+function toggleFullScreen() {
+    if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen().catch(err => {
+            console.warn(`Error attempting to enable fullscreen: ${err.message}`);
+        });
+    } else {
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
+    }
 }
 function setupMenuEvents() {
     elements.menuTrigger.addEventListener("click", () => {
