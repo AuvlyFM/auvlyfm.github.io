@@ -63,6 +63,24 @@ main {
     flex-direction: column;
     width: 100%;
 }
+.hero-section { min-height: 60vh; }
+.card-inicial h1 {
+    background: linear-gradient(45deg, #fff, #bb86fc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.badge-new, .badge-new-mobile {
+    background-color: #bb86fc;
+    color: #000;
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 2px 5px;
+    border-radius: 4px;
+    margin-left: 6px;
+    vertical-align: middle;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
 a {
     text-decoration: none;
     color: inherit;

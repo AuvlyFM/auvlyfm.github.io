@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
     <script src="../js/config.js"></script>
-    <meta charset="UTF-8" />
-    <meta content="width=device-width,initial-scale=1" name="viewport" />
     <link href="https://auvlyfm.github.io/live/" rel="canonical" />
     <link href="css/base.css" rel="stylesheet" />
     <link href="css/home.css" rel="stylesheet" />
@@ -11,30 +9,11 @@
     <link href="favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
     <link href="favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
     <link href="site.webmanifest" rel="manifest" />
-    <style>
-        .hero-section {
-            min-height: 60vh;
-        }
-        .card-inicial h1 {
-            background: linear-gradient(45deg, #fff, #bb86fc);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .badge-new,
-        .badge-new-mobile {
-            background-color: #bb86fc;
-            color: #000;
-            font-size: 0.6rem;
-            font-weight: 800;
-            padding: 2px 5px;
-            border-radius: 4px;
-            margin-left: 6px;
-            vertical-align: middle;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-    </style>
     <title>Last.fm Scrobbling Now Display- AuvlyFM Live</title>
+    <meta name="application-name" content="AuvlyFM Live">
+    <meta name="apple-mobile-web-app-title" content="AuvlyFM Live">
+    <meta charset="UTF-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
     <meta content="Turn your screen into a dynamic music frame. AuvlyFM Live visualizes your Last.fm 'Now Playing' with artist backgrounds and album art in real-time." name="description" />
     <meta content="now playing display, last.fm visualizer, spotify always on, music dashboard, live scrobble, tunecharts live" name="keywords" />
     <meta content="Snow Mint" name="author" />
@@ -49,6 +28,21 @@
     <meta content="AuvlyFM Live - Real-time Music Visualizer" property="twitter:title" />
     <meta content="Turn any screen into a beautiful music display." property="twitter:description" />
     <meta content="https://auvlyfm.github.io/live/assets/images/og-image.jpg" property="twitter:image" />
+            <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebApplication",
+                "name": "AuvlyFM Live",
+                "url": "https://auvlyfm.github.io/live/",
+                "applicationCategory": "MultimediaApplication",
+                "genre": "Music",
+                "operatingSystem": "Web browser",
+                "browserRequirements": "Requires JavaScript",
+                "description": "A beautiful Always-On Display for your music. Syncs with Last.fm in real-time.",
+                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+                "author": { "@type": "Person", "name": "Snow Mint", "url": "https://github.com/snw-mint/" }
+            }
+        </script>
 </head>
 <body id="page-top">
     <header class="home-header">

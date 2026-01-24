@@ -2,8 +2,6 @@
 <html lang="en">
     <head>
         <script src="../js/config.js"></script>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="canonical" href="https://auvlyfm.github.io/matcher/" />
         <link rel="stylesheet" href="css/base.css" />
         <link rel="stylesheet" href="css/home.css" />
@@ -11,27 +9,13 @@
         <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
         <link rel="manifest" href="site.webmanifest" />
-        <style>
-            .hero-section { min-height: 60vh; }
-            .card-inicial h1 {
-                background: linear-gradient(45deg, #fff, #bb86fc);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-            }
-            .badge-new, .badge-new-mobile {
-                background-color: #bb86fc;
-                color: #000;
-                font-size: 0.6rem;
-                font-weight: 800;
-                padding: 2px 5px;
-                border-radius: 4px;
-                margin-left: 6px;
-                vertical-align: middle;
-                letter-spacing: 0.5px;
-                text-transform: uppercase;
-            }
-        </style>
         <title>Last.fm Compatibility Test & Music Matcher - AuvlyFM</title>
+        <meta name="application-name" content="AuvlyFM Matcher">
+        <meta name="apple-mobile-web-app-title" content="AuvlyFM Matcher">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Compare music taste with friends using the Last.fm Compatibility Test. The AuvlyFM Matcher acts as a modern Tasteometer to calculate your score and top shared artists."/>
         <meta name="keywords" content="last.fm compatibility, last.fm match, music taste comparison, tasteometer, compare last.fm users, music compatibility test, lastfm vs, tunecharts" />
         <meta name="author" content="Snow Mint" />
@@ -49,21 +33,16 @@
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
-                "@type": "SoftwareApplication",
+                "@type": "WebApplication",
                 "name": "AuvlyFM Matcher",
+                "url": "https://auvlyfm.github.io/matcher/",
                 "applicationCategory": "MultimediaApplication",
-                "operatingSystem": "Web",
-                "offers": {
-                    "@type": "Offer",
-                    "price": "0",
-                    "priceCurrency": "USD"
-                },
-                "description": "A tool to calculate music compatibility between two Last.fm users.",
-                "author": {
-                    "@type": "Person",
-                    "name": "Snow Mint",
-                    "url": "https://github.com/snw-mint"
-                }
+                "genre": "Music",
+                "operatingSystem": "Web browser",
+                "browserRequirements": "Requires JavaScript",
+                "description": "Compare music taste with friends using the Last.fm Compatibility Test.",
+                "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+                "author": { "@type": "Person", "name": "Snow Mint", "url": "https://github.com/snw-mint/" }
             }
         </script>
     </head>
