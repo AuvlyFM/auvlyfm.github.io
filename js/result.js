@@ -254,42 +254,6 @@ async function processarDadosCalendario(fromTimestamp, toTimestamp) {
 async function processarDadosRelatorio(fromTimestamp, toTimestamp, periodNameForEmpty, finalLabelText) {
   try {
     await processarDadosCalendario(fromTimestamp, toTimestamp);
-    const limit = 50;
-    const toParam = toTimestamp > 0 ? `&to=${toTimestamp}` : "";
-    const artistsUrl = CONFIG.apiUrl(`?method=user.gettopartists&user=${username}&limit=${limit}&from=${fromTimestamp}${toParam}&_t=${Date.now()}`);
-    const tracksUrl = CONFIG.apiUrl(`?method=user.gettoptracks&user=${username}&limit=${limit}&from=${fromTimestamp}${toParam}&_t=${Date.now()}`);
-    const albumsUrl = CONFIG.apiUrl(`?method=user.gettopalbums&user=${username}&limit=${limit}&from=${fromTimestamp}${toParam}&_t=${Date.now()}`);
-    const [arRes, trRes, alRes] = await Promise.all([fetch(artistsUrl), fetch(tracksUrl), fetch(albumsUrl)]);
-    const [arData, trData, alData] = await Promise.all([arRes.json(), trRes.json(), alRes.json()]);
-    const artists =
-      arData.topartists && arData.topartists.artist
-        ? (Array.isArray(arData.topartists.artist) ? arData.topartists.artist : [arData.topartists.artist]).map((a) => ({
-            name: a.name,
-            playcount: parseInt(a.playcount || 0),
-          }))
-        : [];
-    const tracks =
-      trData.toptracks && trData.toptracks.track
-        ? (Array.isArray(trData.toptracks.track) ? trData.toptracks.track : [trData.toptracks.track]).map((t) => ({
-            name: t.name,
-            artist: { name: t.artist?.name || t.artist?.["#text"] || "" },
-            playcount: parseInt(t.playcount || 0),
-          }))
-        : [];
-    const albums =
-      alData.topalbums && alData.topalbums.album
-        ? (Array.isArray(alData.topalbums.album) ? alData.topalbums.album : [alData.topalbums.album]).map((a) => ({
-            name: a.name,
-            artist: { name: a.artist?.name || a.artist?.["#text"] || "" },
-            playcount: parseInt(a.playcount || 0),
-          }))
-        : [];
-    cachedData.artists = artists;
-    cachedData.tracks = tracks;
-    cachedData.albums = albums;
-    renderizarListaProcessada("cardArtists", artists, "artist");
-    renderizarListaProcessada("cardTracks", tracks, "track");
-    renderizarListaProcessada("cardAlbums", albums, "album");
   } catch (err) {
     console.error("Erro processando relatorio:", err);
     document.querySelectorAll(".lista-top").forEach((el) => (el.innerHTML = "Error loading."));
