@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /result.html
+Disallow: /live/live.html
+Disallow: /counter/result.html
+Disallow: /matcher/result.html
+
+Sitemap: https://auvlyfm.github.io/sitemap.xml
