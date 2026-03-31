@@ -17,10 +17,7 @@
     width: 100%;
     height: 100%;
     z-index: 0;
-    background-color: #2a0040;
-    background-size: cover;
-    background-position: center center;
-    transition: background-image 0.5s ease-in-out;
+    background: radial-gradient(circle at top right, #2a0040, #0f0f0f 60%);
 }
 .banner-overlay {
     position: absolute;
@@ -456,17 +453,19 @@
     font-weight: 900;
     display: none;
 }
-.cover-placeholder {
-    background-repeat: no-repeat;
+.top1-rank-badge {
     width: 65px;
     height: 65px;
     border-radius: 8px;
-    background-color: #333;
     flex-shrink: 0;
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 4px 10px rgb(0 0 0 / 0.4);
-    border: 1px solid rgb(255 255 255 / 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    font-weight: 900;
+    color: #bb86fc;
+    background-color: rgb(187 134 252 / 0.1);
+    border: 1px solid rgb(187 134 252 / 0.3);
 }
 .skeleton {
     background: linear-gradient(90deg, #1e1e1e 25%, #2a2a2a 50%, #1e1e1e 75%);
@@ -483,7 +482,7 @@
     background-size: 200% 100%;
     border: 1px solid #333;
 }
-.chart-item.skeleton .cover-placeholder {
+.chart-item.skeleton .top1-rank-badge {
     visibility: hidden;
 }
 h1.skeleton {

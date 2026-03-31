@@ -11,7 +11,6 @@ let chartsToInclude = ["artists", "tracks"];
 let elements = {};
 let globalTopArtistImage = "";
 let cachedData = { artists: [], tracks: [], albums: [] };
-let spotifyTokenCache = null;
 let periodOffset = 0;
 let loadingInterval = null;
 const loadingPhrases = [
@@ -135,7 +134,6 @@ function getMonthName(date) {
 async function atualizarDadosDoPeriodo(isInitialLoad = false) {
   resetarChartsParaSkeleton();
   globalTopArtistImage = "";
-  atualizarBanner("");
   const nextBtn = document.getElementById("nextPeriod");
   if (elements.chartsGrid) elements.chartsGrid.style.display = "grid";
   if (elements.genReportBtn) elements.genReportBtn.style.display = "flex";
@@ -313,26 +311,7 @@ function renderizarListaProcessada(elementId, items, type) {
       let subtitle =
         type !== "artist" ? `<span style="display:block; font-size: 0.85em; opacity: 0.7; font-weight: normal;">${artistName}</span>` : "";
       let countLabel = `<span style="display:block; font-size: 0.75em; opacity: 0.6; margin-top: 4px;">${item.playcount} plays</span>`;
-      htmlMain += `<div class="chart-item top-1"><div id="${imgId}" class="cover-placeholder"></div><div class="text-content"><span class="rank-number">#1</span><div><span>${text}</span>${subtitle}${countLabel}</div></div></div>`;
-      buscarImagemSpotify(artistForSearch, trackForSearch, type).then((spotifyUrl) => {
-        if (spotifyUrl) {
-          const el = document.getElementById(imgId);
-          if (el) {
-            const img = new Image();
-            img.src = spotifyUrl;
-            img.onload = () => {
-              el.innerHTML = "";
-              el.appendChild(img);
-              void el.offsetWidth;
-              img.classList.add("loaded");
-            };
-          }
-          if (type === "artist") {
-            atualizarBanner(spotifyUrl);
-            globalTopArtistImage = spotifyUrl;
-          }
-        }
-      });
+      htmlMain += `<div class="chart-item top-1"><div class="top1-rank-badge">#1</div><div class="text-content"><span class="rank-number">#1</span><div><span>${text}</span>${subtitle}${countLabel}</div></div></div>`;
     } else {
       let extra = type !== "artist" ? ` <span style="opacity:0.6"> - ${artistName}</span>` : "";
       htmlMain += `<div class="chart-item" style="display: flex; justify-content: space-between; gap: 10px;">
@@ -349,7 +328,7 @@ function renderizarListaProcessada(elementId, items, type) {
 }
 
 function resetarChartsParaSkeleton() {
-  const skeletonTop1 = `<div class="chart-item skeleton top-1"><div class="cover-placeholder" style="background: #333;"></div><span class="skeleton-text" style="width: 60%;"></span></div>`;
+  const skeletonTop1 = `<div class="chart-item skeleton top-1"><span class="skeleton-text" style="width: 60%;"></span></div>`;
   const skeletonItem = `<div class="chart-item skeleton"></div>`;
   document.querySelectorAll(".lista-top").forEach((el) => {
     el.innerHTML = skeletonTop1 + skeletonItem.repeat(9);
@@ -381,74 +360,6 @@ async function buscarPerfil() {
   } catch (error) {
     elements.userName.textContent = username;
     elements.userName.classList.remove("skeleton");
-  }
-}
-
-async function obterTokenSpotify() {
-  if (spotifyTokenCache) return spotifyTokenCache;
-  try {
-    const res = await fetch(CONFIG.apiUrl("spotify-token"));
-    const data = await res.json();
-    if (data.access_token) {
-      spotifyTokenCache = data.access_token;
-      return data.access_token;
-    }
-  } catch (e) {
-    console.warn("Falha token Spotify:", e);
-  }
-  return null;
-}
-
-async function buscarImagemSpotify(artist, albumOrTrackName, type) {
-  const token = await obterTokenSpotify();
-  if (!token) return null;
-  const cleanArtist = encodeURIComponent(artist);
-  const cleanTrack = encodeURIComponent(albumOrTrackName.split(" - ")[0].split("(")[0]);
-  let query = "";
-  let searchType = "";
-  if (type === "artist") {
-    query = `q=artist:"${cleanArtist}"`;
-    searchType = "artist";
-  } else if (type === "album") {
-    query = `q=album:"${cleanTrack}" artist:"${cleanArtist}"`;
-    searchType = "album";
-  } else {
-    query = `q=track:"${cleanTrack}" artist:"${cleanArtist}"`;
-    searchType = "track";
-  }
-  try {
-    const url = `https://api.spotify.com/v1/search?${query}&type=${searchType}&limit=1`;
-    const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
-    const data = await res.json();
-    if (type === "artist" && data.artists?.items?.length > 0) {
-      return data.artists.items[0].images[0]?.url;
-    } else if (type === "album" && data.albums?.items?.length > 0) {
-      return data.albums.items[0].images[0]?.url;
-    } else if (type === "track" && data.tracks?.items?.length > 0) {
-      return data.tracks.items[0].album.images[0]?.url;
-    }
-  } catch (e) {
-    return null;
-  }
-  return null;
-}
-
-function atualizarBanner(imgUrl) {
-  if (!elements.bannerBackground) return;
-  if (imgUrl && imgUrl.length > 0) {
-    const img = new Image();
-    img.src = imgUrl;
-    img.onload = () => {
-      elements.bannerBackground.style.backgroundImage = `url('${imgUrl}')`;
-      elements.bannerBackground.style.opacity = 1;
-    };
-  } else {
-    elements.bannerBackground.style.opacity = 0;
-    setTimeout(() => {
-      if (elements.bannerBackground.style.opacity == "0") {
-        elements.bannerBackground.style.backgroundImage = "none";
-      }
-    }, 500);
   }
 }
 
@@ -562,7 +473,7 @@ async function gerarImagemFinal(format, accentColor, selectedCharts) {
     col1.style.display = "flex";
     col2.style.display = "none";
     if (format === "square") col1.style.width = "100%";
-    const limit = format === "story" ? 10 : 5;
+    const limit = format === "story" ? 6 : 5;
     col1Title.textContent = title;
     col1List.innerHTML = formatarListaHTML(data, limit, type, format);
   } else {
@@ -574,7 +485,7 @@ async function gerarImagemFinal(format, accentColor, selectedCharts) {
     col1.style.display = "flex";
     col2.style.display = "flex";
     if (format === "square") col1.style.width = "50%";
-    const limit = format === "story" ? 5 : 5;
+    const limit = format === "story" ? 6 : 5;
     col1Title.textContent = title1;
     col1List.innerHTML = formatarListaHTML(data1, limit, type1, format);
     col2Title.textContent = title2;
@@ -657,21 +568,9 @@ function aplicarCoresDinamicas(card, accentColor, format) {
     textElements.forEach((el) => (el.style.color = accentColor));
     const titles = card.querySelectorAll(".story-column h3");
     titles.forEach((el) => (el.style.borderLeftColor = accentColor));
-    const separator = card.querySelector(".story-separator");
-    if (separator) {
-      separator.style.backgroundColor = accentColor;
-      separator.style.boxShadow = `0 0 25px ${accentColor}99`;
-    }
     const headerElement = card.querySelector(".story-header");
     if (headerElement) {
-      if (globalTopArtistImage) {
-        headerElement.style.backgroundImage = `
-                    radial-gradient(circle at center, transparent 0%, #0f0f0f 120%),
-                    url('${globalTopArtistImage}')
-                `;
-      } else {
-        headerElement.style.background = `radial-gradient(circle at center, ${accentColor}44, #0f0f0f)`;
-      }
+      headerElement.style.background = `radial-gradient(circle at top right, ${accentColor}66, #0f0f0f 65%)`;
     }
   } else {
     card.querySelectorAll(".sq-v2-report-title, .sq-v2-list li.top-1 span, .sq-v2-stat-label").forEach((el) => (el.style.color = accentColor));

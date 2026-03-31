@@ -92,7 +92,7 @@
                     <h2>Top Artists</h2>
                     <div class="lista-top">
                         <div class="chart-item skeleton top-1">
-                            <div class="cover-placeholder" style="background: white; width: 50px; height: 50px; border-radius: 4px; flex-shrink: 0"></div>
+                            <div class="top1-rank-badge">#1</div>
                             <span class="skeleton-text" style="width: 60%"></span>
                         </div>
                         <div class="chart-item skeleton"></div>
@@ -111,7 +111,7 @@
                     <h2>Top Songs</h2>
                     <div class="lista-top">
                         <div class="chart-item skeleton top-1">
-                            <div class="cover-placeholder" style="background: white; width: 50px; height: 50px; border-radius: 4px; flex-shrink: 0"></div>
+                            <div class="top1-rank-badge">#1</div>
                             <span class="skeleton-text" style="width: 60%"></span>
                         </div>
                         <div class="chart-item skeleton"></div>
@@ -132,7 +132,7 @@
                 </h2>
                 <div class="lista-top">
                 <div class="chart-item skeleton top-1">
-                <div class="cover-placeholder" style="background: #333; width: 50px; height: 50px; border-radius: 4px; flex-shrink: 0;"></div>
+                <div class="top1-rank-badge">#1</div>
                 <span class="skeleton-text" style="width: 60%;"></span>
                 </div>
                         <div class="chart-item skeleton"></div>
@@ -150,14 +150,19 @@
             </div>
         </main>
 <div id="storyCardContainer" class="hidden-card-container">
- <div id="storyCard">
-    <div class="story-header">
-        <div class="story-header-overlay"></div>
-    </div>
-    <div class="story-separator"></div>
-    <div class="story-avatar-container">
-        <img id="storyUserImg" src="" alt="" class="story-avatar-img">
-    </div>
+    <div id="storyCard">
+        
+        <div class="story-header" style="position: relative; height: 480px; width: 100%; overflow: hidden;">
+            <div id="customStoryBg" style="display: none; width: 100%; height: 100%; background-size: cover; background-position: center; position: absolute; top: 0; left: 0; z-index: 1;"></div>
+            <div id="storyGradientOverlay" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 2;"></div>
+            <div class="story-header-overlay" style="position: relative; z-index: 3;"></div>
+        </div>
+        
+        <div class="story-separator" style="height: 6px; width: 100%; position: relative; z-index: 10;"></div>
+        
+        <div class="story-avatar-container">
+            <img id="storyUserImg" src="" alt="" class="story-avatar-img">
+        </div>
     <div class="story-info-container">
         <div class="story-info-row">
             <div class="story-info-left">
@@ -296,6 +301,24 @@
         </div> 
         </div> 
         </div> 
+        <div id="imagePickerModal" class="modal">
+            <div class="modal-content">
+                <span class="close-button" data-modal="imagePickerModal">&times;</span>
+                <h2>Custom Cover Image</h2>
+                <p class="modal-info">Upload a background image for your story (Optional).</p>
+                <div style="margin: 20px 0; text-align: center;">
+                    <input type="file" id="customImageInput" accept="image/png, image/jpeg, image/webp" style="display: none;" />
+                    <button class="btn-proceed" onclick="document.getElementById('customImageInput').click()" style="background: #333; margin-bottom: 10px; width: 100%;">Choose Image</button>
+                    <div id="imagePreviewContainer" style="display: none; margin-top: 10px;">
+                        <img id="customImagePreview" src="" alt="Preview" style="max-width: 100%; max-height: 150px; border-radius: 8px; object-fit: cover; border: 2px solid #333;"/>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 10px; justify-content: space-between;">
+                    <button id="skipImageBtn" class="btn-proceed" style="background: transparent; border: 1px solid #bb86fc; color: #bb86fc; width: 48%;">Skip</button>
+                    <button id="confirmImageBtn" class="btn-proceed" style="width: 48%;">Next</button>
+                </div>
+            </div>
+        </div>
         <div id="colorPickerModal" class="modal">
             <div class="modal-content">
                 <span class="close-button" data-modal="colorPickerModal">&times;</span>

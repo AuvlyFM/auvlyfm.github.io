@@ -5,7 +5,6 @@ if (!user1 || !user2) window.location.href = "index.html";
 const iconDownload = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><path d="m8 12 4 4m0 0 4-4m-4 4V4M4 20h16"/></svg>`;
 const iconCheck = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px;"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
 const iconLoading = `<svg class="spinner" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin-right: 8px; animation: spin 1s linear infinite;"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line></svg>`;
-let spotifyTokenCache = null;
 let globalTopCommonImage = ""; 
 let selectedAccentColor = "#bb86fc";
 let selectedFormat = "story"; 
@@ -196,7 +195,7 @@ function fillColumn(cardId, items, isShared) {
                 const imgId = `img-${cardId}-0`;
                 html += `
                 <div class="chart-item top-1">
-                    <div id="${imgId}" class="cover-placeholder"></div>
+                    <div class="top1-rank-badge">#1</div>
                     <div class="text-content">
                         <span class="rank-number">#1</span>
                         <div><span>${name}</span></div>
@@ -224,7 +223,8 @@ function fillHiddenColumn(elementId, items, format) {
     const container = document.getElementById(elementId);
     if (!container) return;
     let html = "";
-    for (let i = 0; i < 5; i++) {
+    const limit = format === "story" ? 6 : 5;
+    for (let i = 0; i < limit; i++) {
         const item = items[i];
         const rank = i + 1;
         const name = item ? item.name : "---";
@@ -247,66 +247,11 @@ function fillHiddenColumn(elementId, items, format) {
 }
 
 async function loadImages(commonArtists, list1, list2) {
-    const bannerArtist = commonArtists.length > 0 ? commonArtists[0].name : list1[0].name;
-    const bannerUrl = await buscarImagemSpotify(bannerArtist, "artist");
-    if (bannerUrl) {
-        globalTopCommonImage = bannerUrl;
-        const bannerEl = document.getElementById("bannerBackground");
-        const imgPreloader = new Image();
-        imgPreloader.src = bannerUrl;
-        imgPreloader.onload = () => {
-            bannerEl.style.backgroundImage = `url('${bannerUrl}')`;
-            bannerEl.style.opacity = 1; 
-        };
-        updateImageInDom("img-cardShared-0", bannerUrl);
-    }
-    if (list1.length > 0) {
-        const url1 = await buscarImagemSpotify(list1[0].name, "artist");
-        if (url1) updateImageInDom("img-cardUser1-0", url1);
-    }
-    if (list2.length > 0) {
-        const url2 = await buscarImagemSpotify(list2[0].name, "artist");
-        if (url2) updateImageInDom("img-cardUser2-0", url2);
-    }
+    // Spotify images removed - no longer available
 }
 
 function updateImageInDom(elementId, url) {
-    const el = document.getElementById(elementId);
-    if (el) {
-        const img = new Image();
-        img.src = url;
-        img.className = "fade-in-image"; 
-        img.onload = () => {
-            el.innerHTML = "";
-            el.appendChild(img);
-        };
-    }
-}
-
-async function obterTokenSpotify() {
-    if (spotifyTokenCache) return spotifyTokenCache;
-    try {
-        const res = await fetch(CONFIG.apiUrl("spotify-token"));
-        const data = await res.json();
-        if (data.access_token) {
-            spotifyTokenCache = data.access_token;
-            return data.access_token;
-        }
-    } catch (e) { console.warn("Falha token Spotify", e); }
-    return null;
-}
-
-async function buscarImagemSpotify(artist, type) {
-    const token = await obterTokenSpotify();
-    if (!token) return null;
-    const q = encodeURIComponent(`artist:"${artist}"`);
-    try {
-        const url = `https://api.spotify.com/v1/search?q=${q}&type=artist&limit=1`;
-        const res = await fetch(url, { headers: { Authorization: `Bearer ${token}` } });
-        const data = await res.json();
-        if (data.artists?.items?.length > 0) return data.artists.items[0].images[0]?.url;
-    } catch (e) { console.warn("Erro imagem Spotify", e); }
-    return null;
+    // Spotify images removed - no longer available
 }
 
 function setupUIEvents() {
@@ -403,11 +348,7 @@ function applyDynamicColors(card, color, format) {
             el.style.backgroundColor = color + "22"; 
         });
         const headerBg = card.querySelector(".story-header");
-        if (globalTopCommonImage) {
-            headerBg.style.background = `linear-gradient(to bottom, rgba(15,15,15,0.2) 0%, #0f0f0f 100%), radial-gradient(circle at top right, ${color}99, transparent 60%), url('${globalTopCommonImage}') no-repeat center center / cover`;
-        } else {
-            headerBg.style.background = `radial-gradient(circle at top right, ${color}66, #0f0f0f)`;
-        }
+        headerBg.style.background = `radial-gradient(circle at top right, ${color}66, #0f0f0f 65%)`;
     } else {
         card.querySelectorAll(".sq-v2-rank, .sq-v2-stat-label").forEach(el => el.style.color = color);
         card.querySelectorAll(".sq-v2-column h3").forEach(el => el.style.borderLeftColor = color);

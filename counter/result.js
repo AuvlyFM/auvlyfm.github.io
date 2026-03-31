@@ -7,10 +7,10 @@ let selectedFormat = "story";
 let chartsToInclude = ["artists", "tracks"];
 let elements = {};
 let globalTopArtistImage = "";
-let spotifyTokenCache = null;
 let cachedData = { artists: [], tracks: [] };
 let periodOffset = 0;
 let loadingInterval = null;
+let userCustomImage = "";
 const loadingPhrases = [
     "Fetching your history...",
     "Scanning tracks...",
@@ -63,6 +63,12 @@ async function carregarTudo() {
         sqScrobblesLabel: document.getElementById("sqScrobblesLabel"),
         sqScrobblesValue: document.getElementById("sqScrobblesValue"),
         chartsGrid: document.querySelector(".charts-grid"),
+        imageModal: document.getElementById("imagePickerModal"),
+        customImageInput: document.getElementById("customImageInput"),
+        customImagePreview: document.getElementById("customImagePreview"),
+        imagePreviewContainer: document.getElementById("imagePreviewContainer"),
+        skipImageBtn: document.getElementById("skipImageBtn"),
+        confirmImageBtn: document.getElementById("confirmImageBtn"),
     };
     configurarEventosHub();
     configurarTogglePeriodo();
@@ -158,7 +164,6 @@ function getMonthName(date) {
 async function atualizarDadosDoPeriodo(isInitialLoad = false) {
     resetarChartsParaSkeleton();
     globalTopArtistImage = "";
-    atualizarBanner("");
     const nextBtn = document.getElementById("nextPeriod");
     if (elements.chartsGrid) elements.chartsGrid.style.display = "grid";
     if (elements.genReportBtn) elements.genReportBtn.style.display = "flex";
@@ -314,57 +319,6 @@ async function processarDadosTempoCalendario(fromTimestamp, toTimestamp, periodN
         renderizarPreviewLista("cardArtists", sortedArtists, "artist");
         renderizarPreviewLista("cardTracks", sortedTracks, "track");
         renderizarPreviewLista("cardAlbums", sortedAlbums, "album");
-        if (sortedArtists.length > 0) {
-            const topArtistName = sortedArtists[0].name;
-            buscarImagemSpotify(topArtistName, "", "artist").then((url) => {
-                if (url) {
-                    globalTopArtistImage = url;
-                    atualizarBanner(url);
-                    const top1ImgEl = document.querySelector("#cardArtists .top-1 .cover-placeholder");
-                    if (top1ImgEl) {
-                         top1ImgEl.innerHTML = "";
-                         const img = new Image();
-                         img.src = url;
-                         img.style.width = "100%";
-                         img.style.height = "100%";
-                         img.style.objectFit = "cover";
-                         img.onload = () => { top1ImgEl.appendChild(img); img.classList.add('loaded'); };
-                    }
-                }
-            });
-        }
-        if (sortedTracks.length > 0) {
-            const topTrack = sortedTracks[0];
-            buscarImagemSpotify(topTrack.artist.name, topTrack.name, "track").then((url) => {
-                if (url) {
-                    const top1TrackEl = document.querySelector("#cardTracks .top-1 .cover-placeholder");
-                    if (top1TrackEl) {
-                        top1TrackEl.innerHTML = "";
-                        const img = new Image();
-                        img.src = url;
-                        img.style.width = "100%";
-                        img.style.height = "100%";
-                        img.style.objectFit = "cover";
-                        img.onload = () => { top1TrackEl.appendChild(img); img.classList.add('loaded'); };
-                    }
-                }
-            });
-        }
-        if (sortedAlbums.length > 0) {
-            const topAlbum = sortedAlbums[0];
-            buscarImagemSpotify(topAlbum.artist.name, topAlbum.name, "album").then((url) => {
-                if (url) {
-                    const top1AlbumEl = document.querySelector("#cardAlbums .top-1 .cover-placeholder");
-                    if (top1AlbumEl) {
-                        top1AlbumEl.innerHTML = "";
-                        const img = new Image();
-                        img.src = url;
-                        img.style.width = "100%"; img.style.height = "100%"; img.style.objectFit = "cover";
-                        img.onload = () => { top1AlbumEl.appendChild(img); img.classList.add('loaded'); };
-                    }
-                }
-            });
-        }
 } catch (error) {
         console.error("Erro calculando tempo:", error);
         if (elements.userScrobbles) elements.userScrobbles.textContent = "Error";
@@ -389,7 +343,6 @@ function tratarEstadoVazio(periodName) {
     }
     if (elements.userScrobbles) { elements.userScrobbles.textContent = "0 Minutes"; elements.userScrobbles.classList.remove("skeleton"); }
     if (elements.scrobblesPerDay) { elements.scrobblesPerDay.textContent = "0 Mins/Day"; elements.scrobblesPerDay.classList.remove("skeleton"); }
-    atualizarBanner("");
 }
 
 async function buscarHistoricoCompleto(fromTimestamp, toTimestamp = 0) {
@@ -420,7 +373,7 @@ async function buscarHistoricoCompleto(fromTimestamp, toTimestamp = 0) {
 function resetarChartsParaSkeleton() {
     const skeletonTop1 = `
         <div class="chart-item skeleton top-1">
-            <div class="cover-placeholder" style="background: #333; width: 50px; height: 50px; border-radius: 4px; flex-shrink: 0;"></div>
+            <div class="top1-rank-badge">#1</div>
             <span class="skeleton-text" style="width: 60%;"></span>
         </div>`;
     const skeletonItem = `<div class="chart-item skeleton"></div>`;
@@ -429,63 +382,6 @@ function resetarChartsParaSkeleton() {
     });
     if (elements.userScrobbles) elements.userScrobbles.innerHTML = "loading...";
     if (elements.scrobblesPerDay) elements.scrobblesPerDay.innerHTML = "loading...";
-}
-
-async function obterTokenSpotify() {
-    if (spotifyTokenCache) return spotifyTokenCache;
-    try {
-        const res = await fetch(CONFIG.counterUrl("spotify-token"));
-        const data = await res.json();
-        if (data.access_token) {
-            spotifyTokenCache = data.access_token;
-            return data.access_token;
-        }
-    } catch (e) { console.warn("Falha token Spotify:", e); }
-    return null;
-}
-
-async function buscarImagemSpotify(artist, albumOrTrackName, type) {
-    const token = await obterTokenSpotify();
-    if (!token) return null;
-    const cleanArtist = artist.replace(/"/g, ''); 
-    const cleanTrack = albumOrTrackName ? albumOrTrackName.split(" - ")[0].split("(")[0].trim() : "";
-    let searchQuery = "";
-    let searchType = "";
-    if (type === "artist") {
-        searchQuery = `artist:${cleanArtist}`;
-        searchType = "artist";
-    } else if (type === "album") {
-        searchQuery = `album:${cleanTrack} artist:${cleanArtist}`;
-        searchType = "album";
-    } else {
-        searchQuery = `track:${cleanTrack} artist:${cleanArtist}`;
-        searchType = "track";
-    }
-    try {
-        const qEncoded = encodeURIComponent(searchQuery);
-        const url = `https://api.spotify.com/v1/search?q=${qEncoded}&type=${searchType}&limit=1`;
-        const res = await fetch(url, {
-            headers: { 
-                "Authorization": `Bearer ${token}` 
-            }
-        });
-        if (!res.ok) {
-            console.warn(`Erro Spotify [${res.status}]:`, await res.text());
-            return null;
-        }
-        const data = await res.json();
-        if (type === "artist" && data.artists?.items?.length > 0) {
-            return data.artists.items[0].images[0]?.url;
-        } else if (type === "album" && data.albums?.items?.length > 0) {
-            return data.albums.items[0].images[0]?.url;
-        } else if (type === "track" && data.tracks?.items?.length > 0) {
-            return data.tracks.items[0].album.images[0]?.url;
-        }
-    } catch (e) {
-        console.error("Erro no fetch do Spotify:", e);
-        return null;
-    }
-    return null;
 }
 
 async function buscarPerfil() {
@@ -531,7 +427,7 @@ function renderizarPreviewLista(elementId, dataList, type) {
         if (isTop1) {
             htmlMain += `
             <div class="chart-item top-1">
-                <div id="${imgId}" class="cover-placeholder" style="width: 50px; height: 50px; flex-shrink: 0; border-radius: 4px; overflow: hidden; background: #333; margin-right: 12px;"></div>
+                <div class="top1-rank-badge">#1</div>
                 <div class="text-content" style="min-width: 0; flex: 1;">
                     <span class="rank-number">#1</span>
                     <div style="min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
@@ -558,25 +454,6 @@ function formatTimeShort(totalSeconds) {
     return `${m}m`;
 }
 
-function atualizarBanner(imgUrl) {
-    if (!elements.bannerBackground) return;
-    if (imgUrl && imgUrl.length > 0) {
-        const img = new Image();
-        img.src = imgUrl;
-        img.onload = () => {
-             elements.bannerBackground.style.backgroundImage = `url('${imgUrl}')`;
-             elements.bannerBackground.style.opacity = 1;
-        };
-    } else {
-        elements.bannerBackground.style.opacity = 0;
-        setTimeout(() => {
-            if (elements.bannerBackground.style.opacity == "0") {
-                elements.bannerBackground.style.backgroundImage = "none";
-            }
-        }, 500);
-    }
-}
-
 function configurarEventosHub() {
     if (!elements.genReportBtn) return;
     if (elements.btnInfo) {
@@ -597,6 +474,7 @@ function configurarEventosHub() {
         if (e.target === elements.colorModal) elements.colorModal.style.display = "none";
         if (e.target === elements.formatModal) elements.formatModal.style.display = "none";
         if (e.target === elements.columnModal) elements.columnModal.style.display = "none";
+        if (e.target === elements.imageModal) elements.imageModal.style.display = "none";
     });
     elements.formatOptions.forEach((btn) => {
         btn.onclick = (e) => {
@@ -625,11 +503,49 @@ function configurarEventosHub() {
         });
         updateSelection();
     }
-    elements.confirmColumnsBtn.onclick = () => {
+elements.confirmColumnsBtn.onclick = () => {
         if (chartsToInclude.length < 1 || chartsToInclude.length > 2) return;
         elements.columnModal.style.display = "none";
-        elements.colorModal.style.display = "flex";
+        
+        if (selectedFormat === "story") {
+            elements.imageModal.style.display = "flex";
+            userCustomImage = "";
+            if (elements.customImageInput) elements.customImageInput.value = "";
+            if (elements.imagePreviewContainer) elements.imagePreviewContainer.style.display = "none";
+        } else {
+            elements.colorModal.style.display = "flex";
+        }
     };
+
+    if (elements.customImageInput) {
+        elements.customImageInput.addEventListener("change", (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    userCustomImage = event.target.result;
+                    elements.customImagePreview.src = userCustomImage;
+                    elements.imagePreviewContainer.style.display = "block";
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    }
+
+    if (elements.skipImageBtn) {
+        elements.skipImageBtn.onclick = () => {
+            userCustomImage = "";
+            elements.imageModal.style.display = "none";
+            elements.colorModal.style.display = "flex";
+        };
+    }
+
+    if (elements.confirmImageBtn) {
+        elements.confirmImageBtn.onclick = () => {
+            elements.imageModal.style.display = "none";
+            elements.colorModal.style.display = "flex";
+        };
+    }
     elements.colorOptions.forEach((btn) => {
         btn.onclick = (e) => {
             elements.colorOptions.forEach((b) => b.classList.remove("selected"));
@@ -774,20 +690,32 @@ function aplicarCoresDinamicas(card, accentColor, format) {
         card.querySelectorAll(".story-column h3").forEach(
             (el) => (el.style.borderLeftColor = accentColor)
         );
+        
         const separator = card.querySelector(".story-separator");
         if (separator) {
             separator.style.backgroundColor = accentColor;
-            separator.style.boxShadow = `0 0 20px ${accentColor}99`; 
+            separator.style.boxShadow = `0 0 25px ${accentColor}`; 
         }
+        
         const headerElement = card.querySelector(".story-header");
-        if (headerElement) {
-            if (globalTopArtistImage) {
-                headerElement.style.backgroundImage = `
-                    radial-gradient(circle at center, transparent 0%, #0f0f0f 120%),
-                    url('${globalTopArtistImage}')
-                `;
+        const headerOverlay = card.querySelector(".story-header-overlay");
+        const customBg = card.querySelector("#customStoryBg");
+        const gradientOverlay = card.querySelector("#storyGradientOverlay");
+
+        // Trava de segurança: Remove qualquer radial-gradient que venha do arquivo CSS
+        if (headerElement) headerElement.style.background = "none";
+        if (headerOverlay) headerOverlay.style.background = "none";
+
+        if (customBg && gradientOverlay) {
+            if (userCustomImage) {
+                customBg.style.backgroundImage = `url('${userCustomImage}')`;
+                customBg.style.display = "block";
+                // Aplicando gradiente linear escurecendo para baixo
+                gradientOverlay.style.background = `linear-gradient(to bottom, transparent 0%, #0f0f0f 100%)`;
             } else {
-                headerElement.style.background = `radial-gradient(circle at center, ${accentColor}44, #0f0f0f)`;
+                customBg.style.display = "none";
+                // Aplicando gradiente linear com a cor de destaque
+                gradientOverlay.style.background = `linear-gradient(to bottom, ${accentColor}55 0%, #0f0f0f 100%)`;
             }
         }
     } else {
@@ -800,7 +728,9 @@ function aplicarCoresDinamicas(card, accentColor, format) {
             el.style.borderColor = accentColor;
             el.style.backgroundColor = accentColor + "33";
         });
-        card.style.background = `radial-gradient(circle at top right, ${accentColor}66, #0f0f0f 65%)`;
+        
+        // Mantendo linear-gradient no card quadrado por segurança
+        card.style.background = `linear-gradient(135deg, ${accentColor}55 0%, #0f0f0f 65%)`;
     }
 }
 

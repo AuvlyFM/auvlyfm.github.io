@@ -85,7 +85,7 @@ a {
     text-decoration: none;
     color: inherit;
 }
-body:not(.pagina-resultado) {
+body {
     background: radial-gradient(circle at top right, #2a0040, #0f0f0f 60%);
     background-attachment: fixed;
 }
@@ -352,7 +352,7 @@ a {
     text-decoration: none;
     color: inherit;
 }
-body:not(.pagina-resultado) {
+body {
     background: radial-gradient(circle at top right, #2a0040, #0f0f0f 60%);
     background-attachment: fixed;
 }

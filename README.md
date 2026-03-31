@@ -4,12 +4,7 @@
 
 # 🎵 AuvlyFM Suite
 
-[![Stars](https://img.shields.io/github/stars/snw-mint/auvly-fm?style=flat)](https://github.com/AuvlyFM/auvlyfm.github.io//stargazers)
-[![Forks](https://img.shields.io/github/forks/snw-mint/auvly-fm?style=flat)](https://github.com/AuvlyFM/auvlyfm.github.io//network/members)
-[![Issues](https://img.shields.io/github/issues/snw-mint/auvly-fm?style=flat)](https://github.com/AuvlyFM/auvlyfm.github.io/issues)
-[![Last Commit](https://img.shields.io/github/last-commit/snw-mint/auvly-fm?style=flat)](https://github.com/AuvlyFM/auvlyfm.github.io//commits/main)
-
-A suite of visual tools for music lovers, integrated with Last.fm and Spotify APIs. This project generates aesthetic reports ("receipts"), listening statistics, and music compatibility analysis, optimized for social sharing (Instagram Stories).
+A suite of visual tools for music lovers, integrated with the Last.fm API. This project generates aesthetic reports ("receipts"), listening statistics, and music compatibility analysis, optimized for social sharing (Instagram Stories).
 
 This repository is a **Monorepo** hosting three distinct tools in subdirectories, serving both the main domain and its subdomains.
 
@@ -31,11 +26,6 @@ auvly-fm/
 ├── matcher/            
 │   ├── index.html
 │   ├── assets/         
-│   └── ...
-│
-├── live/            
-│   ├── index.html
-│   ├── live.html (The brain)
 │   └── ...
 ```
 
@@ -73,17 +63,9 @@ Compares scrobble data between two users over the last 30 days, identifying shar
 -   **Report generation:** Generates 9:16 or 1:1 split-view charts, visually comparing the "vibe" of both users side-by-side.
 </details>
 
-<details> <summary> <strong>4. ▶️ Live (/live)</strong> </summary>
+<details> <summary> <strong>4. ▶️ Live (/live) — ⛔ Discontinued</strong> </summary>
 
-A screen to display your "Now Scrobbling" track directly from Last.fm.
-
-**Features:**
--   **Focus:** Designed solely as an "Always On Display" for the track currently playing via Last.fm.   
--   **Customization:** Fully customizable visual layout.
--   **Live:** Automatically updates to reflect the current track in real-time.
-- **Limitation:** Available only for PC.
-
-**NOTE: This tool is a visualizer, not a streaming music player (like Spotify or Apple Music). Updates rely on the Last.fm status and may experience a slight delay; they are not instantaneous.**
+> **This tool has been discontinued.** Due to Spotify's new strict API policies requiring a premium developer subscription, the Live tool — which relied heavily on the Spotify API for album artwork and background images — is no longer functional and has been removed.
 
 </details>
 
