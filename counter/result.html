@@ -1,252 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <script src="../js/config.js"></script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ESTEDCB9SM"></script>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8782792659735691"
-        crossorigin="anonymous"></script>
-        <script>
+
+<head>
+    <script src="../js/config.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ESTEDCB9SM"></script>
+    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+        data-id="snow.mint" data-description="Support me on Buy me a coffee!"
+        data-message="Did you like the tool? Buy me a coffee!" data-color="#BD5FFF" data-position="Right"
+        data-x_margin="18" data-y_margin="18"></script>
+    <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-ESTEDCB9SM');
-        </script>
-        <meta name="robots" content="noindex, nofollow">
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="css/base.css" />
-        <link rel="stylesheet" href="css/result.css" />
-        <link rel="stylesheet" href="css/cards.css" />
-        <title>Time Counter - AuvlyFM</title>
-        <meta name="description" content="Calculate your total music listening time on Last.fm! See minutes listened for artists and tracks." />
-        <meta name="theme-color" content="#0f0f0f" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://auvlyfm.github.io/counter/" />
-        <meta property="og:title" content="My Listening Time on AuvlyFM" />
-        <meta property="og:description" content="I calculated my total listening time on Last.fm. Check yours now!" />
-        <meta property="og:image" content="https://auvlyfm.github.io/counter/assets/og-image.jpg" />
-        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-        <link rel="manifest" href="site.webmanifest" />
-    </head>
-    <body class="pagina-resultado">
-        <header class="topo-fixo">
-           <a href="index.html" class="btn-voltar" style="display: flex; align-items: center; gap: 8px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M4 12h16M4 12l4-4m-4 4 4 4"/>
+    </script>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/result.css" />
+    <link rel="stylesheet" href="css/cards.css" />
+    <title>Time Counter - AuvlyFM</title>
+    <meta name="description"
+        content="Calculate your total music listening time on Last.fm! See minutes listened for artists and tracks." />
+    <meta name="theme-color" content="#0f0f0f" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://auvlyfm.github.io/counter/" />
+    <meta property="og:title" content="My Listening Time on AuvlyFM" />
+    <meta property="og:description" content="I calculated my total listening time on Last.fm. Check yours now!" />
+    <meta property="og:image" content="https://auvlyfm.github.io/counter/assets/og-image.jpg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+</head>
+
+<body class="pagina-resultado">
+    <header class="topo-fixo">
+        <a href="index.html" class="btn-voltar" style="display: flex; align-items: center; gap: 8px;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 12h16M4 12l4-4m-4 4 4 4" />
             </svg>
             <span>Back</span>
-            </a>
-            <div class="toggle-wrapper">
-                <div class="toggle-icon-box" title="Calendar">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g stroke-width="0"/>
-                    <g stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M2 12c0-3.771 0-5.657 1.172-6.828S6.229 4 10 4h4c3.771 0 5.657 0 6.828 1.172S22 8.229 22 12v2c0 3.771 0 5.657-1.172 6.828S17.771 22 14 22h-4c-3.771 0-5.657 0-6.828-1.172S2 17.771 2 14z" 
-                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M7 4V2.5M17 4V2.5M2.5 9h19" 
-                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    <path d="M18 17a1 1 0 1 1-2 0 1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0 1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0 1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0" 
-                          fill="currentColor"/>
+        </a>
+        <div class="toggle-wrapper">
+            <div class="toggle-icon-box" title="Calendar">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g stroke-width="0" />
+                    <g stroke-linecap="round" stroke-linejoin="round" />
+                    <path
+                        d="M2 12c0-3.771 0-5.657 1.172-6.828S6.229 4 10 4h4c3.771 0 5.657 0 6.828 1.172S22 8.229 22 12v2c0 3.771 0 5.657-1.172 6.828S17.771 22 14 22h-4c-3.771 0-5.657 0-6.828-1.172S2 17.771 2 14z"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    <path d="M7 4V2.5M17 4V2.5M2.5 9h19" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                    <path
+                        d="M18 17a1 1 0 1 1-2 0 1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0 1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0m-5 4a1 1 0 1 1-2 0 1 1 0 0 1 2 0m0-4a1 1 0 1 1-2 0 1 1 0 0 1 2 0"
+                        fill="currentColor" />
                 </svg>
-                </div>
-                <div id="periodToggle" class="period-toggle" data-tooltip="You can change the period here">
-                    <div class="toggle-glider"></div>
-                    <button class="toggle-option" data-period="7day">Week</button>
-                    <button class="toggle-option active" data-period="1month">Month</button>
-                </div>
             </div>
-        </header>
-        <section class="topo-com-banner">
-            <div class="banner-fundo" id="bannerBackground">
-                <div class="banner-overlay"></div>
+            <div id="periodToggle" class="period-toggle" data-tooltip="You can change the period here">
+                <div class="toggle-glider"></div>
+                <button class="toggle-option" data-period="7day">Week</button>
+                <button class="toggle-option active" data-period="1month">Month</button>
             </div>
-            <div class="perfil-container">
-                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt=" " class="foto-perfil skeleton" id="userFoto" />
-                <h1 id="userName" class="skeleton">&nbsp;</h1>
-                <div class="stats-row">
-                    <div class="scrobbles-info"><span id="userScrobbles" class="skeleton">----</span></div>
-                    <div class="scrobbles-info"><span id="scrobblesPerDay" class="skeleton">--</span></div>
-                </div>
-                <div class="period-navigation">
-                    <button id="prevPeriod" class="nav-btn" title="Previous">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M14 7l-5 5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                    <div class="period-pill">
-                        <div class="period-mask">
-                            <p class="monthly-label">loading...</p>
-                        </div>
-                    </div>
-                    <button id="nextPeriod" class="nav-btn" title="Next" style="visibility: hidden;">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M10 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </button>
-                </div>
+        </div>
+    </header>
+    <section class="topo-com-banner">
+        <div class="banner-fundo" id="bannerBackground">
+            <div class="banner-overlay"></div>
+        </div>
+        <div class="perfil-container">
+            <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt=" "
+                class="foto-perfil skeleton" id="userFoto" />
+            <h1 id="userName" class="skeleton">&nbsp;</h1>
+            <div class="stats-row">
+                <div class="scrobbles-info"><span id="userScrobbles" class="skeleton">----</span></div>
+                <div class="scrobbles-info"><span id="scrobblesPerDay" class="skeleton">--</span></div>
             </div>
-        </section>
-        <main class="conteudo-charts">
-            <div class="charts-grid">
-                <section class="chart-card" id="cardArtists">
-                    <h2>Top Artists</h2>
-                    <div class="lista-top">
-                        <div class="chart-item skeleton top-1">
-                            <div class="top1-rank-badge">#1</div>
-                            <span class="skeleton-text" style="width: 60%"></span>
-                        </div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
+            <div class="period-navigation">
+                <button id="prevPeriod" class="nav-btn" title="Previous">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M14 7l-5 5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <div class="period-pill">
+                    <div class="period-mask">
+                        <p class="monthly-label">loading...</p>
                     </div>
-                </section>
-                <section class="chart-card" id="cardTracks">
-                    <h2>Top Songs</h2>
-                    <div class="lista-top">
-                        <div class="chart-item skeleton top-1">
-                            <div class="top1-rank-badge">#1</div>
-                            <span class="skeleton-text" style="width: 60%"></span>
-                        </div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
+                </div>
+                <button id="nextPeriod" class="nav-btn" title="Next" style="visibility: hidden;">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M10 7l5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+    <main class="conteudo-charts">
+        <div class="charts-grid">
+            <section class="chart-card" id="cardArtists">
+                <h2>Top Artists</h2>
+                <div class="lista-top">
+                    <div class="chart-item skeleton top-1">
+                        <div class="top1-rank-badge">#1</div>
+                        <span class="skeleton-text" style="width: 60%"></span>
                     </div>
-                </section>
-                <section class="chart-card" id="cardAlbums">
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                </div>
+            </section>
+            <section class="chart-card" id="cardTracks">
+                <h2>Top Songs</h2>
+                <div class="lista-top">
+                    <div class="chart-item skeleton top-1">
+                        <div class="top1-rank-badge">#1</div>
+                        <span class="skeleton-text" style="width: 60%"></span>
+                    </div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                </div>
+            </section>
+            <section class="chart-card" id="cardAlbums">
                 <h2>
-                Top Albums
+                    Top Albums
                 </h2>
                 <div class="lista-top">
-                <div class="chart-item skeleton top-1">
-                <div class="top1-rank-badge">#1</div>
-                <span class="skeleton-text" style="width: 60%;"></span>
+                    <div class="chart-item skeleton top-1">
+                        <div class="top1-rank-badge">#1</div>
+                        <span class="skeleton-text" style="width: 60%;"></span>
+                    </div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
+                    <div class="chart-item skeleton"></div>
                 </div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
-                        <div class="chart-item skeleton"></div>
+            </section>
+        </div>
+    </main>
+    <div id="storyCardContainer" class="hidden-card-container">
+        <div id="storyCard">
+
+            <div class="story-header" style="position: relative; height: 480px; width: 100%; overflow: hidden;">
+                <div id="customStoryBg"
+                    style="display: none; width: 100%; height: 100%; background-size: cover; background-position: center; position: absolute; top: 0; left: 0; z-index: 1;">
                 </div>
-                </section>
+                <div id="storyGradientOverlay"
+                    style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 2;"></div>
+                <div class="story-header-overlay" style="position: relative; z-index: 3;"></div>
             </div>
-        </main>
-<div id="storyCardContainer" class="hidden-card-container">
-    <div id="storyCard">
-        
-        <div class="story-header" style="position: relative; height: 480px; width: 100%; overflow: hidden;">
-            <div id="customStoryBg" style="display: none; width: 100%; height: 100%; background-size: cover; background-position: center; position: absolute; top: 0; left: 0; z-index: 1;"></div>
-            <div id="storyGradientOverlay" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 2;"></div>
-            <div class="story-header-overlay" style="position: relative; z-index: 3;"></div>
-        </div>
-        
-        <div class="story-separator" style="height: 6px; width: 100%; position: relative; z-index: 10;"></div>
-        
-        <div class="story-avatar-container">
-            <img id="storyUserImg" src="" alt="" class="story-avatar-img">
-        </div>
-    <div class="story-info-container">
-        <div class="story-info-row">
-            <div class="story-info-left">
-                <span class="story-label-small">Month Review</span>
-                <span id="storySubtitle" class="story-subtitle">JANUARY 2026</span>
+
+            <div class="story-separator" style="height: 6px; width: 100%; position: relative; z-index: 10;"></div>
+
+            <div class="story-avatar-container">
+                <img id="storyUserImg" src="" alt="" class="story-avatar-img">
             </div>
-            <div class="story-info-right">
-                <span class="story-label-small">Prepared for</span>
-                <h1 id="storyTitle" class="story-username">User</h1>
+            <div class="story-info-container">
+                <div class="story-info-row">
+                    <div class="story-info-left">
+                        <span class="story-label-small">Month Review</span>
+                        <span id="storySubtitle" class="story-subtitle">JANUARY 2026</span>
+                    </div>
+                    <div class="story-info-right">
+                        <span class="story-label-small">Prepared for</span>
+                        <h1 id="storyTitle" class="story-username">User</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="story-body">
+                <div class="story-column">
+                    <h3 id="storyCol1Title">Top Artists</h3>
+                    <div id="storyCol1List" class="story-list"></div>
+                </div>
+                <div class="story-column">
+                    <h3 id="storyCol2Title">Top Songs</h3>
+                    <div id="storyCol2List" class="story-list"></div>
+                </div>
+            </div>
+            <div class="story-footer">
+                <div class="footer-stat-group">
+                    <span id="storyScrobblesValue" class="footer-stat-value">0</span>
+                    <span id="storyScrobblesLabel" class="footer-stat-label">Total Time</span>
+                </div>
+                <div class="story-brand">auvlyfm.github.io</div>
             </div>
         </div>
     </div>
-    <div class="story-body">
-        <div class="story-column">
-            <h3 id="storyCol1Title">Top Artists</h3>
-            <div id="storyCol1List" class="story-list"></div>
-        </div>
-        <div class="story-column">
-            <h3 id="storyCol2Title">Top Songs</h3>
-            <div id="storyCol2List" class="story-list"></div>
-        </div>
-    </div>
-    <div class="story-footer">
-        <div class="footer-stat-group">
-            <span id="storyScrobblesValue" class="footer-stat-value">0</span>
-            <span id="storyScrobblesLabel" class="footer-stat-label">Total Time</span>
-        </div>
-        <div class="story-brand">auvlyfm.github.io</div>
-    </div>
-</div>
-</div>
-<div id="squareCardV2Container" class="hidden-card-container">
-            <div id="squareCardV2">
-                <div class="sq-v2-header">
-                    <img id="sqUserImg" src="" alt="User Avatar" class="sq-v2-avatar" />
-                    <div class="sq-v2-user-info">
-                        <span id="sqUsername" class="sq-v2-username"></span>
-                        <span id="sqReportTitle" class="sq-v2-report-title"></span>
-                    </div>
+    <div id="squareCardV2Container" class="hidden-card-container">
+        <div id="squareCardV2">
+            <div class="sq-v2-header">
+                <img id="sqUserImg" src="" alt="User Avatar" class="sq-v2-avatar" />
+                <div class="sq-v2-user-info">
+                    <span id="sqUsername" class="sq-v2-username"></span>
+                    <span id="sqReportTitle" class="sq-v2-report-title"></span>
                 </div>
-                <div class="sq-v2-body">
-                    <div class="sq-v2-column">
-                        <h3 id="sqCol1Title">Top Artists</h3>
-                        <ul id="sqCol1List" class="sq-v2-list"></ul>
-                    </div>
-                    <div class="sq-v2-column">
-                        <h3 id="sqCol2Title">Top Tracks</h3>
-                        <ul id="sqCol2List" class="sq-v2-list"></ul>
-                    </div>
+            </div>
+            <div class="sq-v2-body">
+                <div class="sq-v2-column">
+                    <h3 id="sqCol1Title">Top Artists</h3>
+                    <ul id="sqCol1List" class="sq-v2-list"></ul>
                 </div>
-                <div class="sq-v2-footer">
-                    <div class="sq-v2-brand">Create yours at auvlyfm.github.io</div>
-                    <div class="sq-v2-stat">
-                        <span id="sqScrobblesLabel" class="sq-v2-stat-label"></span>
-                        <span id="sqScrobblesValue" class="sq-v2-stat-value">0</span>
-                    </div>
+                <div class="sq-v2-column">
+                    <h3 id="sqCol2Title">Top Tracks</h3>
+                    <ul id="sqCol2List" class="sq-v2-list"></ul>
+                </div>
+            </div>
+            <div class="sq-v2-footer">
+                <div class="sq-v2-brand">Create yours at auvlyfm.github.io</div>
+                <div class="sq-v2-stat">
+                    <span id="sqScrobblesLabel" class="sq-v2-stat-label"></span>
+                    <span id="sqScrobblesValue" class="sq-v2-stat-value">0</span>
                 </div>
             </div>
         </div>
-        <button id="btnGerarRelatorio" style="display: flex; align-items: center; gap: 10px; justify-content: center;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 15c0 2.828 0 4.243.879 5.121C4.757 21 6.172 21 9 21h6c2.828 0 4.243 0 5.121-.879C21 19.243 21 17.828 21 15M12 3v13m0 0 4-4.375M12 16l-4-4.375"/>
+    </div>
+    <button id="btnGerarRelatorio" style="display: flex; align-items: center; gap: 10px; justify-content: center;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+                d="M3 15c0 2.828 0 4.243.879 5.121C4.757 21 6.172 21 9 21h6c2.828 0 4.243 0 5.121-.879C21 19.243 21 17.828 21 15M12 3v13m0 0 4-4.375M12 16l-4-4.375" />
         </svg>
         Generate Report
-        </button>
-        <div id="formatPickerModal" class="modal">
-            <div class="modal-content">
-                <span class="close-button" data-modal="formatPickerModal">&times;</span>
-                <h2>Choose a format</h2>
-                <div class="format-picker">
-                    <button class="format-option" data-format="story">
-                        <div class="format-preview format-story"></div>
-                        <span>Story (9:16)</span>
-                    </button>
-                    <button class="format-option" data-format="square">
-                        <div class="format-preview format-square"></div>
-                        <span>Square (1:1)</span>
-                    </button>
-                </div>
+    </button>
+    <div id="formatPickerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" data-modal="formatPickerModal">&times;</span>
+            <h2>Choose a format</h2>
+            <div class="format-picker">
+                <button class="format-option" data-format="story">
+                    <div class="format-preview format-story"></div>
+                    <span>Story (9:16)</span>
+                </button>
+                <button class="format-option" data-format="square">
+                    <div class="format-preview format-square"></div>
+                    <span>Square (1:1)</span>
+                </button>
             </div>
         </div>
-        <div id="columnPickerModal" class="modal">
+    </div>
+    <div id="columnPickerModal" class="modal">
         <div class="modal-content">
             <span class="close-button" data-modal="columnPickerModal">&times;</span>
             <h2>What do you want to show?</h2>
@@ -255,134 +271,184 @@
                 <div class="toggle-switch-row">
                     <label class="toggle-label" for="col-artists">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M7 8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8V11C17 13.7614 14.7614 16 12 16C9.23858 16 7 13.7614 7 11V8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M13 8L17 8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M13 11L17 11" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M20 10V11C20 15.4183 16.4183 19 12 19C7.58172 19 4 15.4183 4 11V10" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M12 19V22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path
+                                d="M7 8C7 5.23858 9.23858 3 12 3C14.7614 3 17 5.23858 17 8V11C17 13.7614 14.7614 16 12 16C9.23858 16 7 13.7614 7 11V8Z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M13 8L17 8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M13 11L17 11" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M20 10V11C20 15.4183 16.4183 19 12 19C7.58172 19 4 15.4183 4 11V10"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M12 19V22" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
                         </svg>
                         <span style="margin-left:8px;">Top Artists</span>
                     </label>
                     <label class="toggle-switch">
-                        <input type="checkbox" id="col-artists" class="chart-col-option" data-list="artists" data-title="Top Artists" checked />
+                        <input type="checkbox" id="col-artists" class="chart-col-option" data-list="artists"
+                            data-title="Top Artists" checked />
                         <span class="slider"></span>
                     </label>
                 </div>
                 <div class="toggle-switch-row">
                     <label class="toggle-label" for="col-tracks">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M9 19C9 20.6569 7.65685 22 6 22C4.34315 22 3 20.6569 3 19C3 17.3431 4.34315 16 6 16C7.65685 16 9 17.3431 9 19Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M21 17C21 18.6569 19.6569 20 18 20C16.3431 20 15 18.6569 15 17C15 15.3431 16.3431 14 18 14C19.6569 14 21 15.3431 21 17Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M9 19V8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M21 17V6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M15.7351 3.75466L11.7351 5.08799C10.4151 5.52801 9.75503 5.74801 9.37752 6.27179C9 6.79556 9 7.49128 9 8.88273V11.9997L21 7.99969V7.54939C21 5.01693 21 3.7507 20.1694 3.15206C19.3388 2.55341 18.1376 2.95383 15.7351 3.75466Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path
+                                d="M9 19C9 20.6569 7.65685 22 6 22C4.34315 22 3 20.6569 3 19C3 17.3431 4.34315 16 6 16C7.65685 16 9 17.3431 9 19Z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M21 17C21 18.6569 19.6569 20 18 20C16.3431 20 15 18.6569 15 17C15 15.3431 16.3431 14 18 14C19.6569 14 21 15.3431 21 17Z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M9 19V8" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path d="M21 17V6" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <path
+                                d="M15.7351 3.75466L11.7351 5.08799C10.4151 5.52801 9.75503 5.74801 9.37752 6.27179C9 6.79556 9 7.49128 9 8.88273V11.9997L21 7.99969V7.54939C21 5.01693 21 3.7507 20.1694 3.15206C19.3388 2.55341 18.1376 2.95383 15.7351 3.75466Z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         <span style="margin-left:8px;">Top Tracks</span>
                     </label>
                     <label class="toggle-switch">
-                        <input type="checkbox" id="col-tracks" class="chart-col-option" data-list="tracks" data-title="Top Tracks" checked />
+                        <input type="checkbox" id="col-tracks" class="chart-col-option" data-list="tracks"
+                            data-title="Top Tracks" checked />
                         <span class="slider"></span>
                     </label>
                 </div>
                 <div class="toggle-switch-row">
                     <label class="toggle-label" for="col-albums">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M2.38351 13.793C1.93748 10.6294 1.71447 9.04765 2.66232 8.02383C3.61017 7 5.29758 7 8.67239 7H15.3276C18.7024 7 20.3898 7 21.3377 8.02383C22.2855 9.04765 22.0625 10.6294 21.6165 13.793L21.1935 16.793C20.8437 19.2739 20.6689 20.5143 19.7717 21.2572C18.8745 22 17.5512 22 14.9046 22H9.09536C6.44881 22 5.12553 22 4.22834 21.2572C3.33115 20.5143 3.15626 19.2739 2.80648 16.793L2.38351 13.793Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M12 17C12 17.8284 11.3284 18.5 10.5 18.5C9.67157 18.5 9 17.8284 9 17C9 16.1716 9.67157 15.5 10.5 15.5C11.3284 15.5 12 16.1716 12 17ZM12 17V10.5C12 12.1569 13.8954 13.5 15 13.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M19.5617 7C19.7904 5.69523 18.7863 4.5 17.4617 4.5H6.53788C5.21323 4.5 4.20922 5.69523 4.43784 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M17.4999 4.5C17.5283 4.24092 17.5425 4.11135 17.5427 4.00435C17.545 2.98072 16.7739 2.12064 15.7561 2.01142C15.6497 2 15.5194 2 15.2588 2H8.74099C8.48035 2 8.35002 2 8.24362 2.01142C7.22584 2.12064 6.45481 2.98072 6.45704 4.00434C6.45727 4.11135 6.47146 4.2409 6.49983 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path
+                                d="M2.38351 13.793C1.93748 10.6294 1.71447 9.04765 2.66232 8.02383C3.61017 7 5.29758 7 8.67239 7H15.3276C18.7024 7 20.3898 7 21.3377 8.02383C22.2855 9.04765 22.0625 10.6294 21.6165 13.793L21.1935 16.793C20.8437 19.2739 20.6689 20.5143 19.7717 21.2572C18.8745 22 17.5512 22 14.9046 22H9.09536C6.44881 22 5.12553 22 4.22834 21.2572C3.33115 20.5143 3.15626 19.2739 2.80648 16.793L2.38351 13.793Z"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M12 17C12 17.8284 11.3284 18.5 10.5 18.5C9.67157 18.5 9 17.8284 9 17C9 16.1716 9.67157 15.5 10.5 15.5C11.3284 15.5 12 16.1716 12 17ZM12 17V10.5C12 12.1569 13.8954 13.5 15 13.5"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M19.5617 7C19.7904 5.69523 18.7863 4.5 17.4617 4.5H6.53788C5.21323 4.5 4.20922 5.69523 4.43784 7"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path
+                                d="M17.4999 4.5C17.5283 4.24092 17.5425 4.11135 17.5427 4.00435C17.545 2.98072 16.7739 2.12064 15.7561 2.01142C15.6497 2 15.5194 2 15.2588 2H8.74099C8.48035 2 8.35002 2 8.24362 2.01142C7.22584 2.12064 6.45481 2.98072 6.45704 4.00434C6.45727 4.11135 6.47146 4.2409 6.49983 4.5"
+                                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         <span style="margin-left:8px;">Top Albums</span>
                     </label>
                     <label class="toggle-switch">
-                        <input type="checkbox" id="col-albums" class="chart-col-option" data-list="albums" data-title="Top Albums" />
+                        <input type="checkbox" id="col-albums" class="chart-col-option" data-list="albums"
+                            data-title="Top Albums" />
                         <span class="slider"></span>
                     </label>
-                </div> 
-            <button id="confirmColumnsBtn" class="btn-proceed">Choose Color</button>
-        </div> 
-        </div> 
-        </div> 
-        <div id="imagePickerModal" class="modal">
-            <div class="modal-content">
-                <span class="close-button" data-modal="imagePickerModal">&times;</span>
-                <h2>Custom Cover Image</h2>
-                <p class="modal-info">Upload a background image for your story (Optional).</p>
-                <div style="margin: 20px 0; text-align: center;">
-                    <input type="file" id="customImageInput" accept="image/png, image/jpeg, image/webp" style="display: none;" />
-                    <button class="btn-proceed" onclick="document.getElementById('customImageInput').click()" style="background: #333; margin-bottom: 10px; width: 100%;">Choose Image</button>
-                    <div id="imagePreviewContainer" style="display: none; margin-top: 10px;">
-                        <img id="customImagePreview" src="" alt="Preview" style="max-width: 100%; max-height: 150px; border-radius: 8px; object-fit: cover; border: 2px solid #333;"/>
-                    </div>
                 </div>
-                <div style="display: flex; gap: 10px; justify-content: space-between;">
-                    <button id="skipImageBtn" class="btn-proceed" style="background: transparent; border: 1px solid #bb86fc; color: #bb86fc; width: 48%;">Skip</button>
-                    <button id="confirmImageBtn" class="btn-proceed" style="width: 48%;">Next</button>
-                </div>
+                <button id="confirmColumnsBtn" class="btn-proceed">Choose Color</button>
             </div>
         </div>
-        <div id="colorPickerModal" class="modal">
-            <div class="modal-content">
-                <span class="close-button" data-modal="colorPickerModal">&times;</span>
-                <h2>Choose your accent color!</h2>
-                <div class="color-palette">
-                    <button class="color-option" data-color="#F44336" style="background-color: #f44336" title="Red"></button>
-                    <button class="color-option" data-color="#FF5733" style="background-color: #ff5733" title="Orange"></button>
-                    <button class="color-option" data-color="#FFD700" style="background-color: #ffd700" title="Yellow"></button>
-                    <button class="color-option" data-color="#28a745" style="background-color: #28a745" title="Green"></button>
-                    <button class="color-option" data-color="#39CCCC" style="background-color: #39cccc" title="Aqua"></button>
-                    <button class="color-option" data-color="#337AFF" style="background-color: #337aff" title="Blue"></button>
-                    <button class="color-option" data-color="#bb86fc" style="background-color: #bb86fc" title="Purple"></button>
-                    <button class="color-option" data-color="#FF1493" style="background-color: #ff1493" title="Pink"></button>
+    </div>
+    <div id="imagePickerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" data-modal="imagePickerModal">&times;</span>
+            <h2>Custom Cover Image</h2>
+            <p class="modal-info">Upload a background image for your story (Optional).</p>
+            <div style="margin: 20px 0; text-align: center;">
+                <input type="file" id="customImageInput" accept="image/png, image/jpeg, image/webp"
+                    style="display: none;" />
+                <button class="btn-proceed" onclick="document.getElementById('customImageInput').click()"
+                    style="background: #333; margin-bottom: 10px; width: 100%;">Choose Image</button>
+                <div id="imagePreviewContainer" style="display: none; margin-top: 10px;">
+                    <img id="customImagePreview" src="" alt="Preview"
+                        style="max-width: 100%; max-height: 150px; border-radius: 8px; object-fit: cover; border: 2px solid #333;" />
                 </div>
             </div>
-        </div>
-        <div id="disclaimerModal" class="modal">
-            <div class="modal-content">
-                <span class="close-button" data-modal="disclaimerModal">&times;</span>
-                <h2>How is this calculated?</h2>
-                <div style="text-align: left; color: #ccc; font-size: 0.95rem; line-height: 1.6; display: flex; flex-direction: column; gap: 15px">
-                    <p>
-                        <strong style="color: #bb86fc">1. Time Calculation:</strong><br />
-                        This tool multiplies your playcount by the track's duration. <br /><em>Example:</em> Listening to a <strong>10-minute song once</strong> counts as more time than listening to a <strong>3-minute song three times</strong> (9 mins). That's why a track with fewer plays might rank higher!
-                    </p>
-                    <p>
-                        <strong style="color: #bb86fc">2. API Limitations:</strong><br />
-                        Due to Last.fm limits, we fetch your top <strong>1,000 tracks</strong> to calculate these stats. If you have a huge library, tracks outside this top 1,000 aren't counted in the total time, but the estimate is usually very accurate for your top charts.
-                    </p>
-                </div>
-                <button class="btn-proceed" style="margin-top: 20px" onclick="document.getElementById('disclaimerModal').style.display='none'">Got it!</button>
+            <div style="display: flex; gap: 10px; justify-content: space-between;">
+                <button id="skipImageBtn" class="btn-proceed"
+                    style="background: transparent; border: 1px solid #bb86fc; color: #bb86fc; width: 48%;">Skip</button>
+                <button id="confirmImageBtn" class="btn-proceed" style="width: 48%;">Next</button>
             </div>
         </div>
-        <footer>
-            <div class="footer-info">
-                <span class="info-line-1">© <span id="currentYear"></span> AuvlyFM.</span>
-                <span class="info-line-2">All rights reserved.</span><span class="separator">|</span>
-                <span class="info-line-3">Created with 💜 by <a href="https://github.com/snw-mint/" target="_blank">Snow Mint</a></span>
+    </div>
+    <div id="colorPickerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" data-modal="colorPickerModal">&times;</span>
+            <h2>Choose your accent color!</h2>
+            <div class="color-palette">
+                <button class="color-option" data-color="#F44336" style="background-color: #f44336"
+                    title="Red"></button>
+                <button class="color-option" data-color="#FF5733" style="background-color: #ff5733"
+                    title="Orange"></button>
+                <button class="color-option" data-color="#FFD700" style="background-color: #ffd700"
+                    title="Yellow"></button>
+                <button class="color-option" data-color="#28a745" style="background-color: #28a745"
+                    title="Green"></button>
+                <button class="color-option" data-color="#39CCCC" style="background-color: #39cccc"
+                    title="Aqua"></button>
+                <button class="color-option" data-color="#337AFF" style="background-color: #337aff"
+                    title="Blue"></button>
+                <button class="color-option" data-color="#bb86fc" style="background-color: #bb86fc"
+                    title="Purple"></button>
+                <button class="color-option" data-color="#FF1493" style="background-color: #ff1493"
+                    title="Pink"></button>
             </div>
-            <div class="footer-links">
-                <a href="privacy.html">Privacy Policy</a>
-                <span class="dot">•</span>
-                <a href="terms.html">Terms of Use</a>
-                <span class="dot">•</span>
-                <a href="https://github.com/AuvlyFM/auvlyfm.github.io/issues" target="_blank">Feedback / Issues</a>
-                <span class="dot">•</span>
-                <a href="https://github.com/AuvlyFM/auvlyfm.github.io/" target="_blank" aria-label="View Source on GitHub" title="View Source on GitHub" style="display: inline-flex; align-items: center">
-                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 0.2s">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                    </svg>
-                </a>
-                <span class="dot">•</span>
-                <a href="https://github.com/AuvlyFM/auvlyfm.github.io//releases" target="_blank" class="versao">v0.0.0</a>
+        </div>
+    </div>
+    <div id="disclaimerModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" data-modal="disclaimerModal">&times;</span>
+            <h2>How is this calculated?</h2>
+            <div
+                style="text-align: left; color: #ccc; font-size: 0.95rem; line-height: 1.6; display: flex; flex-direction: column; gap: 15px">
+                <p>
+                    <strong style="color: #bb86fc">1. Time Calculation:</strong><br />
+                    This tool multiplies your playcount by the track's duration. <br /><em>Example:</em> Listening to a
+                    <strong>10-minute song once</strong> counts as more time than listening to a <strong>3-minute song
+                        three times</strong> (9 mins). That's why a track with fewer plays might rank higher!
+                </p>
+                <p>
+                    <strong style="color: #bb86fc">2. API Limitations:</strong><br />
+                    Due to Last.fm limits, we fetch your top <strong>1,000 tracks</strong> to calculate these stats. If
+                    you have a huge library, tracks outside this top 1,000 aren't counted in the total time, but the
+                    estimate is usually very accurate for your top charts.
+                </p>
             </div>
-        </footer>
-            <button id="scrollTopBtn" aria-label="Top">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 6v12m0-12-5 5m5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <button class="btn-proceed" style="margin-top: 20px"
+                onclick="document.getElementById('disclaimerModal').style.display='none'">Got it!</button>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-info">
+            <span class="info-line-1">© <span id="currentYear"></span> AuvlyFM.</span>
+            <span class="info-line-2">All rights reserved.</span><span class="separator">|</span>
+            <span class="info-line-3">Created with 💜 by <a href="https://github.com/snw-mint/" target="_blank">Snow
+                    Mint</a></span>
+        </div>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <span class="dot">•</span>
+            <a href="terms.html">Terms of Use</a>
+            <span class="dot">•</span>
+            <a href="https://github.com/AuvlyFM/auvlyfm.github.io/issues" target="_blank">Feedback / Issues</a>
+            <span class="dot">•</span>
+            <a href="https://github.com/AuvlyFM/auvlyfm.github.io/" target="_blank" aria-label="View Source on GitHub"
+                title="View Source on GitHub" style="display: inline-flex; align-items: center">
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 0.2s">
+                    <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                    </path>
                 </svg>
-            </button>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-        <script src="result.js"></script>
-        <script src="../js/version.js"></script>
-    </body>
+            </a>
+            <span class="dot">•</span>
+            <a href="https://github.com/AuvlyFM/auvlyfm.github.io//releases" target="_blank" class="versao">v0.0.0</a>
+        </div>
+    </footer>
+    <button id="scrollTopBtn" aria-label="Top">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 6v12m0-12-5 5m5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </button>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="result.js"></script>
+    <script src="../js/version.js"></script>
+</body>
+
 </html>

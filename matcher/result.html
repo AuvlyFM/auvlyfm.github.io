@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <script src="../js/config.js"></script>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-ESTEDCB9SM"></script>
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8782792659735691"
-        crossorigin="anonymous"></script>
-        <script>
+
+<head>
+    <script src="../js/config.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ESTEDCB9SM"></script>
+    <script data-name="BMC-Widget" data-cfasync="false" src="https://cdnjs.buymeacoffee.com/1.0.0/widget.prod.min.js"
+        data-id="snow.mint" data-description="Support me on Buy me a coffee!" data-message="" data-color="#BD5FFF"
+        data-position="Right" data-x_margin="18" data-y_margin="18"></script>
+    <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-ESTEDCB9SM');
-        </script>
-        <meta name="robots" content="noindex, nofollow">
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>AuvlyFM Matcher</title>
-        <meta name="theme-color" content="#bb86fc" />
-        <link rel="stylesheet" href="css/base.css" />
-        <link rel="stylesheet" href="css/result.css" />
-        <link rel="stylesheet" href="css/cards.css" />
-        <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
-        <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
-        <link rel="manifest" href="site.webmanifest" />
-    </head>
-    <body class="pagina-resultado">
+    </script>
+    <meta name="robots" content="noindex, nofollow">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AuvlyFM Matcher</title>
+    <meta name="theme-color" content="#bb86fc" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/result.css" />
+    <link rel="stylesheet" href="css/cards.css" />
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="manifest" href="site.webmanifest" />
+</head>
+
+<body class="pagina-resultado">
     <header class="topo-fixo">
         <a href="index.html" class="btn-voltar" style="display: flex; align-items: center; gap: 8px;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 12h16M4 12l4-4m-4 4 4 4"/>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 12h16M4 12l4-4m-4 4 4 4" />
             </svg>
             <span>Back</span>
         </a>
@@ -39,12 +43,13 @@
         </div>
         <div class="duo-header-container">
             <div class="perfil-container user-left">
-                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt=" " class="foto-perfil skeleton" id="userFoto1" /> 
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt=" "
+                    class="foto-perfil skeleton" id="userFoto1" />
                 <h1 id="userName1" class="skeleton">&nbsp;</h1>
                 <div class="stats-row">
                     <div class="scrobbles-info">
                         <span id="userScrobbles1" class="skeleton">----</span> scrobbles
-                    </div>  
+                    </div>
                 </div>
             </div>
             <div class="divisor-vs">
@@ -52,12 +57,13 @@
                 <span id="vsScoreTag"></span>
             </div>
             <div class="perfil-container user-right">
-                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt=" " class="foto-perfil skeleton" id="userFoto2" /> 
+                <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt=" "
+                    class="foto-perfil skeleton" id="userFoto2" />
                 <h1 id="userName2" class="skeleton">&nbsp;</h1>
                 <div class="stats-row">
                     <div class="scrobbles-info">
                         <span id="userScrobbles2" class="skeleton">----</span> scrobbles
-                    </div>  
+                    </div>
                 </div>
             </div>
         </div>
@@ -65,7 +71,7 @@
             <h2 class="subtitulo-destaque">MATCH: <span id="compatibilityScore">--</span>%</h2>
             <p id="commonContent" class="monthly-label">Analyzing your musical bond...</p>
         </div>
-    </section> 
+    </section>
     <main class="conteudo-charts">
         <div class="charts-grid">
             <section class="chart-card" id="cardUser1">
@@ -100,7 +106,7 @@
     <div class="hidden-card-container">
         <div id="storyCard">
             <div class="story-header" id="storyHeaderBg">
-                <div class="story-header-content">   
+                <div class="story-header-content">
                     <div class="duo-user-block">
                         <img id="storyUserImg1" src="" class="story-avatar-duo" />
                         <h1 id="storyUserName1" class="story-username-duo">...</h1>
@@ -111,7 +117,8 @@
                         <h1 id="storyUserName2" class="story-username-duo">...</h1>
                     </div>
                 </div>
-                <p id="storySharedText" class="story-dynamic-text" style="display:none"></p> </div>
+                <p id="storySharedText" class="story-dynamic-text" style="display:none"></p>
+            </div>
             <div class="story-body">
                 <div class="story-column">
                     <h3 id="storyColTitle1">User 1</h3>
@@ -161,17 +168,21 @@
             </div>
         </div>
     </div>
-        <button id="btnGerarRelatorio" style="display: flex; align-items: center; gap: 10px; justify-content: center;">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M3 15c0 2.828 0 4.243.879 5.121C4.757 21 6.172 21 9 21h6c2.828 0 4.243 0 5.121-.879C21 19.243 21 17.828 21 15M12 3v13m0 0 4-4.375M12 16l-4-4.375"/>
+    <button id="btnGerarRelatorio" style="display: flex; align-items: center; gap: 10px; justify-content: center;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path
+                d="M3 15c0 2.828 0 4.243.879 5.121C4.757 21 6.172 21 9 21h6c2.828 0 4.243 0 5.121-.879C21 19.243 21 17.828 21 15M12 3v13m0 0 4-4.375M12 16l-4-4.375" />
         </svg>
         Generate Report
-        </button>
+    </button>
     <div id="formatPickerModal" class="modal">
         <div class="modal-content">
-            <span class="close-button" data-modal="formatPickerModal" style="display: flex; align-items: center; justify-content: center;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="m6 6 12 12m0-12L6 18"/>
+            <span class="close-button" data-modal="formatPickerModal"
+                style="display: flex; align-items: center; justify-content: center;">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m6 6 12 12m0-12L6 18" />
                 </svg>
             </span>
             <h2>Choose a format</h2>
@@ -192,46 +203,61 @@
             <span class="close-button" data-modal="colorPickerModal">&times;</span>
             <h2>Choose your accent color!</h2>
             <div class="color-palette">
-                <button class="color-option" data-color="#F44336" style="background-color: #f44336" title="Red"></button>
-                <button class="color-option" data-color="#FF5733" style="background-color: #ff5733" title="Orange"></button>
-                <button class="color-option" data-color="#FFD700" style="background-color: #ffd700" title="Yellow"></button>
-                <button class="color-option" data-color="#28a745" style="background-color: #28a745" title="Green"></button>
-                <button class="color-option" data-color="#39CCCC" style="background-color: #39cccc" title="Aqua"></button>
-                <button class="color-option" data-color="#337AFF" style="background-color: #337aff" title="Blue"></button>
-                <button class="color-option" data-color="#bb86fc" style="background-color: #bb86fc" title="Purple"></button>
-                <button class="color-option" data-color="#FF1493" style="background-color: #ff1493" title="Pink"></button>
+                <button class="color-option" data-color="#F44336" style="background-color: #f44336"
+                    title="Red"></button>
+                <button class="color-option" data-color="#FF5733" style="background-color: #ff5733"
+                    title="Orange"></button>
+                <button class="color-option" data-color="#FFD700" style="background-color: #ffd700"
+                    title="Yellow"></button>
+                <button class="color-option" data-color="#28a745" style="background-color: #28a745"
+                    title="Green"></button>
+                <button class="color-option" data-color="#39CCCC" style="background-color: #39cccc"
+                    title="Aqua"></button>
+                <button class="color-option" data-color="#337AFF" style="background-color: #337aff"
+                    title="Blue"></button>
+                <button class="color-option" data-color="#bb86fc" style="background-color: #bb86fc"
+                    title="Purple"></button>
+                <button class="color-option" data-color="#FF1493" style="background-color: #ff1493"
+                    title="Pink"></button>
             </div>
         </div>
     </div>
-        <footer>
-            <div class="footer-info">
-                <span class="info-line-1">© <span id="currentYear"></span> AuvlyFM.</span>
-                <span class="info-line-2">All rights reserved.</span><span class="separator">|</span>
-                <span class="info-line-3">Created with 💜 by <a href="https://github.com/snw-mint/" target="_blank">Snow Mint</a></span>
-            </div>
-            <div class="footer-links">
-                <a href="privacy.html">Privacy Policy</a>
-                <span class="dot">•</span>
-                <a href="terms.html">Terms of Use</a>
-                <span class="dot">•</span>
-                <a href="https://github.com/AuvlyFM/auvlyfm.github.io/issues" target="_blank">Feedback / Issues</a>
-                <span class="dot">•</span>
-                <a href="https://github.com/AuvlyFM/auvlyfm.github.io/" target="_blank" aria-label="View Source on GitHub" title="View Source on GitHub" style="display: inline-flex; align-items: center">
-                    <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 0.2s">
-                        <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
-                    </svg>
-                </a>
-                <span class="dot">•</span>
-                <a href="https://github.com/AuvlyFM/auvlyfm.github.io//releases" target="_blank" class="versao">v0.0.0</a>
-            </div>
-        </footer>
-            <button id="scrollTopBtn" aria-label="Top">
-                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M12 6v12m0-12-5 5m5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    <footer>
+        <div class="footer-info">
+            <span class="info-line-1">© <span id="currentYear"></span> AuvlyFM.</span>
+            <span class="info-line-2">All rights reserved.</span><span class="separator">|</span>
+            <span class="info-line-3">Created with 💜 by <a href="https://github.com/snw-mint/" target="_blank">Snow
+                    Mint</a></span>
+        </div>
+        <div class="footer-links">
+            <a href="privacy.html">Privacy Policy</a>
+            <span class="dot">•</span>
+            <a href="terms.html">Terms of Use</a>
+            <span class="dot">•</span>
+            <a href="https://github.com/AuvlyFM/auvlyfm.github.io/issues" target="_blank">Feedback / Issues</a>
+            <span class="dot">•</span>
+            <a href="https://github.com/AuvlyFM/auvlyfm.github.io/" target="_blank" aria-label="View Source on GitHub"
+                title="View Source on GitHub" style="display: inline-flex; align-items: center">
+                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none"
+                    stroke-linecap="round" stroke-linejoin="round" style="transition: stroke 0.2s">
+                    <path
+                        d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22">
+                    </path>
                 </svg>
-            </button>
+            </a>
+            <span class="dot">•</span>
+            <a href="https://github.com/AuvlyFM/auvlyfm.github.io//releases" target="_blank" class="versao">v0.0.0</a>
+        </div>
+    </footer>
+    <button id="scrollTopBtn" aria-label="Top">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 6v12m0-12-5 5m5-5 5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round" />
+        </svg>
+    </button>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="result.js"></script>
     <script src="../js/version.js"></script>
-    </body>
+</body>
+
 </html>
